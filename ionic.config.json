@@ -1,0 +1,7 @@
+{
+  "name": "DragNReceive_Mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
