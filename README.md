@@ -1,2 +1,2 @@
 # DragNReceive_Mobile
- a ??? Mobile Application for DragNReceive project
+ a Ionic and Vue Mobile Application for DragNReceive project
