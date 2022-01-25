@@ -1,2 +1,87 @@
-# DragNReceive_Mobile
- a Ionic and Vue Mobile Application for DragNReceive project
+<br />
+<p align="center">
+    <img src="https://www.promeo-formation.fr/themes/custom/promeo/img/logos/logo_promeo_white.svg" alt="Logo" height="50px"><br>
+    <h3 align="center">Projet Personnel Encadré DragNReceive - Mobile </h3>
+        
+<details open="open">
+  <summary>Sommaire</summary>
+  <ol>
+    <li>
+      <a href="#Introduction">Introduction</a>
+    </li>
+    <li>
+      <a href="#Installation">Installation</a>
+    </li>
+    <ul>
+        <li>
+            <a href="#Project-setup">Project setup</a>
+        </li>
+    </ul>
+    <li>
+      <a href="#Technologies">Technologies</a>
+    </li>
+    <li>
+      <a href="#To-do">To-do</a>
+    </li>
+    <li>
+      <a href="#Sources">Sources</a>
+    </li>
+</details> 
+    
+# Introduction
+    
+
+
+# Installation
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+    
+# Technologies
+
+***Le projet a été créé en utilisant :***
+
+***Les logiciels :***
+
+> Visual Studio Code,
+> Android Studio,
+> Ionic,
+> Capacitor,
+> Vue,
+> NPM
+
+***Les langues :***
+
+> JavaScript,
+> HTML,
+> CSS,
+> JSON
+
+# To-do
+ 
+-
+ 
+# Sources
+
+-
+
