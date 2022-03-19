@@ -5,22 +5,22 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    state: {
+  state: {
 
-    },
-    getters: { /* return to mapGetters */
+  },
+  getters: { /* return to mapGetters */
 
-    },
-    actions: { /* from dispatch */
+  },
+  actions: { /* from dispatch */
 
-    },
-    mutations: { /* from commit */
+  },
+  mutations: { /* from commit */
 
-    },
-    modules: {
+  },
+  modules: {
 
-    },
-    plugins: [createPersistedState()]
+  },
+  plugins: [createPersistedState()]
 });
 
 export default store;
