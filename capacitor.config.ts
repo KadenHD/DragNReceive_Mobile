@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
-  appName: 'DragNReceive_Mobile',
+  appName: 'dragnreceive_mobile',
   webDir: 'dist',
   bundledWebRuntime: false
 };

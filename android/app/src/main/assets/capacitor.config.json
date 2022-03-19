@@ -1,6 +1,6 @@
 {
 	"appId": "io.ionic.starter",
-	"appName": "DragNReceive_Mobile",
+	"appName": "dragnreceive_mobile",
 	"webDir": "dist",
 	"bundledWebRuntime": false
 }
