@@ -84,7 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
  
--
+- Savoir si le localStorage fonctionne sur mobile
  
 # Sources
 
