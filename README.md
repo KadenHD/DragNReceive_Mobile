@@ -56,7 +56,7 @@ npm run lint
 
 ### Build for Android
 ```
-Ionic capacitor build android
+ionic capacitor build android
 ```
 
 ### Customize configuration
