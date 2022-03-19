@@ -54,6 +54,11 @@ npm run build
 npm run lint
 ```
 
+### Build for Android
+```
+ionic capacitor build android
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
     
