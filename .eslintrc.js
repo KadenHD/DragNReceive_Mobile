@@ -14,6 +14,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'vue/no-deprecated-slot-attribute': 'off',
+    'vue/multi-word-component-names': 'off', // Permit to ensure components names error
   },
   overrides: [
     {
