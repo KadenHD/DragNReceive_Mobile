@@ -89,4 +89,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Sources
 
 - Ionic docs : [Link](https://ionicframework.com/docs/components)
-
+- Ionicons : [Link](https://ionic.io/ionicons)
