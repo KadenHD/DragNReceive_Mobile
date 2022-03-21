@@ -35,7 +35,7 @@
         </ion-card-content>
       </ion-card>
       <ion-card-content>
-        <ion-button expand="full" @click="login()"
+        <ion-button expand="full" @click="register()"
           >S'inscrire</ion-button
         ></ion-card-content
       >
@@ -79,7 +79,7 @@ export default defineComponent({
     };
   },
   methods: {
-    login() {
+    register() {
       console.log(this.data);
     },
   },
