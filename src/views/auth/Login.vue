@@ -7,7 +7,7 @@
       <ion-card-content>
         <ion-item>
           <ion-label position="floating">Addresse email</ion-label>
-          <ion-input v-model="data.username"></ion-input>
+          <ion-input v-model="data.email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating">Mot de passe</ion-label>
@@ -48,7 +48,7 @@ export default defineComponent({
   data() {
     return {
       data: {
-        username: "",
+        email: "",
         password: "",
       },
     };
