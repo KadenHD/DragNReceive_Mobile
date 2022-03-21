@@ -4,7 +4,7 @@ import Home from '@/views/Home.vue';
 
 import authRouter from "./auth.js";
 
-import { homeRedirections, isLogged } from '../functions/beforeEnter';
+import { homeRedirections, isLogged } from '@/utils/beforeEnter';
 
 const routes = [
   ...authRouter,
