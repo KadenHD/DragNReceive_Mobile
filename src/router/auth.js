@@ -1,7 +1,7 @@
 import Login from '@/views/auth/Login.vue';
 import Register from '@/views/auth/Register.vue';
 
-import { isNotLogged } from '../functions/beforeEnter';
+import { isNotLogged } from '@/utils/beforeEnter';
 
 export default [
     {
