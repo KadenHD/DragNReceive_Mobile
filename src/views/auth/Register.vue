@@ -10,7 +10,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-item>
-            <ion-label position="floating">Addresse email</ion-label>
+            <ion-label position="floating">Adresse email</ion-label>
             <ion-input v-model="data.email"></ion-input>
           </ion-item>
           <ion-item>
