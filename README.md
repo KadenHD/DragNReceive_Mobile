@@ -85,7 +85,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # To-do
  
 - Prendre en main la validation de formulaires
-- Modifier les theme/variables.css
+- Modifier les theme/variables.css en fonction de la charte graphique
  
 # Sources
 
