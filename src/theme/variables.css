@@ -5,6 +5,7 @@ http://ionicframework.com/docs/theming/ */
 :root {
   /** Font **/
   --ion-font-family: "Roboto", "Helvetica Neue", sans-serif;
+
   /** primary **/
   --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
