@@ -86,6 +86,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
  
 - Prendre en main la validation de formulaires
 - Modifier les theme/variables.css en fonction de la charte graphique
+- Avoir un register, login, logout fonctionnel
+- Faire le mobile token / mot de passe oublié
  
 # Sources
 
