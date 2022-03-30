@@ -1,12 +1,15 @@
 <template>
-  <div class="Home">Home</div>
+  <ion-page></ion-page>
 </template>
 
 <script>
-import {} from "@ionic/vue";
+import { IonPage } from "@ionic/vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: {},
+  name: "Home",
+  components: {
+    IonPage,
+  },
 });
 </script>
