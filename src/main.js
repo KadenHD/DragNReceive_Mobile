@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import { IonicVue } from '@ionic/vue';
+import customAnimation from './plugins/ionicAnimation.js';
 import router from './router';
 import store from './store';
 import './plugins/axios.js';
@@ -25,7 +26,10 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 const app = createApp(App)
-  .use(IonicVue)
+  .use(IonicVue, {
+    animated: true,
+    navAnimation: customAnimation
+  })
   .use(store)
   .use(router);
 
