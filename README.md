@@ -84,7 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
  
-- Prendre en main la validation de formulaires
+- Prendre en main la validation de formulaires (Form Validation VueJS)
 - Modifier les theme/variables.css en fonction de la charte graphique
 - Avoir un register, login, logout fonctionnel
 - Faire le mobile token / mot de passe oublié
