@@ -1,37 +1,27 @@
 <template>
-  <ion-page>
-    <ion-content>
-      <AuthForm>
-        <AuthTopSection title="Réinitialisation de mot de passe" />
-        <UiInput
-          label="Adresse Email"
-          type="text"
-          placeholder="Saisissez votre adresse email"
-          v-model:value="data.email"
-        />
-        <UiButton color="primary" @click="reset">Envoyer</UiButton>
-      </AuthForm>
-    </ion-content>
-  </ion-page>
+  <AuthWrapper title="Réinitialisation de mot de passe">
+    <UiInput
+      label="Adresse Email"
+      type="text"
+      placeholder="Saisissez votre adresse email"
+      v-model:value="data.email"
+    />
+    <UiButton color="primary" @click="reset()">Envoyer</UiButton>
+  </AuthWrapper>
 </template>
 
 <script>
-import { defineComponent, reactive } from "vue";
-import { IonPage, IonContent } from "@ionic/vue";
-import AuthTopSection from "@/components/auth/TopSection.vue";
-import UiButton from "@/components/ui/Button.vue";
-import AuthForm from "@/components/auth/Form.vue";
+import AuthWrapper from "@/components/auth/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
+import UiButton from "@/components/ui/Button.vue";
+import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
   name: "AuthResetTab",
   components: {
-    AuthForm,
-    AuthTopSection,
+    AuthWrapper,
     UiInput,
     UiButton,
-    IonPage,
-    IonContent,
   },
   setup() {
     const data = reactive({
