@@ -1,7 +1,5 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 
-import Home from '@/views/Home.vue';
-
 import authRouter from "./auth.js";
 
 import { homeRedirections, isLogged } from '@/utils/beforeEnter';
@@ -16,7 +14,7 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home,
+    component: () => import('@/views/Home.vue'),
     beforeEnter: isLogged
   },
   {
