@@ -1,66 +1,56 @@
 <template>
-  <ion-page>
-    <ion-content>
-      <AuthForm>
-        <AuthTopSection title="Inscription" />
-        <UiInput
-          label="Nom"
-          type="text"
-          placeholder="Saisissez votre nom"
-          alert=""
-          v-model:value="data.lastname"
-        />
-        <UiInput
-          label="Prénom"
-          type="text"
-          placeholder="Saisissez votre prénom"
-          alert=""
-          v-model:value="data.firstname"
-        />
-        <UiInput
-          label="Adresse Email"
-          type="text"
-          placeholder="Saisissez votre adresse email"
-          alert=""
-          v-model:value="data.email"
-        />
-        <UiInput
-          label="Mot de passe"
-          type="password"
-          placeholder="Saisissez votre mot de passe"
-          alert=""
-          v-model:value="data.password"
-        />
-        <UiInput
-          label="Confirmez le mot de passe"
-          type="password"
-          placeholder="Saisissez de nouveau votre mot de passe"
-          alert=""
-          v-model:value="data.confirmPassword"
-        />
-        <UiButton color="primary" @click="register">S'inscrire</UiButton>
-      </AuthForm>
-    </ion-content>
-  </ion-page>
+  <AuthWrapper title="Inscription">
+    <UiInput
+      label="Nom"
+      type="text"
+      placeholder="Saisissez votre nom"
+      alert=""
+      v-model:value="data.lastname"
+    />
+    <UiInput
+      label="Prénom"
+      type="text"
+      placeholder="Saisissez votre prénom"
+      alert=""
+      v-model:value="data.firstname"
+    />
+    <UiInput
+      label="Adresse Email"
+      type="text"
+      placeholder="Saisissez votre adresse email"
+      alert=""
+      v-model:value="data.email"
+    />
+    <UiInput
+      label="Mot de passe"
+      type="password"
+      placeholder="Saisissez votre mot de passe"
+      alert=""
+      v-model:value="data.password"
+    />
+    <UiInput
+      label="Confirmez le mot de passe"
+      type="password"
+      placeholder="Saisissez de nouveau votre mot de passe"
+      alert=""
+      v-model:value="data.confirmPassword"
+    />
+    <UiButton color="primary" @click="register()">S'inscrire</UiButton>
+  </AuthWrapper>
 </template>
 
 <script>
-import AuthForm from "@/components/auth/Form.vue";
-import AuthTopSection from "@/components/auth/TopSection.vue";
+import AuthWrapper from "@/components/auth/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
-import { IonPage, IonContent } from "@ionic/vue";
 import { defineComponent, reactive } from "vue";
 
 export default defineComponent({
   name: "AuthRegisterTab",
   components: {
-    AuthForm,
-    AuthTopSection,
+    AuthWrapper,
     UiInput,
     UiButton,
-    IonPage,
-    IonContent,
   },
   setup() {
     const data = reactive({
