@@ -1,19 +1,31 @@
-import Login from '@/views/auth/Login.vue';
-import Register from '@/views/auth/Register.vue';
-
 import { isNotLogged } from '@/utils/beforeEnter';
 
 export default [
     {
-        path: '/login',
-        name: 'Login',
-        component: Login,
-        beforeEnter: isNotLogged
-    },
-    {
-        path: '/register',
-        name: 'Register',
-        component: Register,
-        beforeEnter: isNotLogged
-    },
+        path: '/auth/',
+        component: () => import('@/views/auth/AuthTabs.vue'),
+        beforeEnter: isNotLogged,
+        children: [
+            {
+                path: '',
+                name: 'NotAuth',
+                redirect: '/auth/login'
+            },
+            {
+                path: 'login',
+                name: 'Login',
+                component: () => import('@/views/auth/LoginTab.vue')
+            },
+            {
+                path: 'register',
+                name: 'Register',
+                component: () => import('@/views/auth/RegisterTab.vue')
+            },
+            {
+                path: 'reset',
+                name: 'Reset',
+                component: () => import('@/views/auth/ResetTab.vue')
+            }
+        ]
+    }
 ]
