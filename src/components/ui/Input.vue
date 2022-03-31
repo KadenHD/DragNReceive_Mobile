@@ -8,6 +8,7 @@
       @input="$emit('update:value', $event.target.value)"
     ></ion-input>
   </ion-item>
+  <slot></slot>
 </template>
 
 <script>
