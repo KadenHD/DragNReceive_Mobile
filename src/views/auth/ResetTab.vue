@@ -1,12 +1,17 @@
 <template>
   <AuthWrapper title="Réinitialisation de mot de passe">
-    <UiInput
-      label="Adresse Email"
-      type="text"
-      placeholder="Saisissez votre adresse email"
-      v-model:value="data.email"
-    />
-    <UiButton color="primary" @click="reset()">Envoyer</UiButton>
+    <form @submit.prevent="submitResetForm" autocomplete="off">
+      <UiInput
+        label="Adresse Email"
+        type="text"
+        placeholder="Saisissez votre adresse email"
+        v-model:value="data.email"
+      />
+      <ion-text v-if="!emailIsValid(data.email).valid" color="danger">{{
+        emailIsValid(data.email).error
+      }}</ion-text>
+      <UiButton color="primary" type="submit">Envoyer</UiButton>
+    </form>
   </AuthWrapper>
 </template>
 
@@ -15,6 +20,9 @@ import AuthWrapper from "@/components/auth/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
+import { IonText } from "@ionic/vue";
+
+import { emailIsValid } from "@/utils/validInputs.js";
 
 export default defineComponent({
   name: "AuthResetTab",
@@ -22,6 +30,7 @@ export default defineComponent({
     AuthWrapper,
     UiInput,
     UiButton,
+    IonText,
   },
   setup() {
     window.onload = function () {
@@ -29,12 +38,18 @@ export default defineComponent({
     };
     const data = reactive({
       email: "",
-      password: "",
     });
-    const reset = () => {
-      console.log(data);
-    };
-    return { data, reset };
+    return { emailIsValid, data };
+  },
+  methods: {
+    submitResetForm() {
+      const formIsValid = this.emailIsValid(this.data.email).valid;
+      if (formIsValid) {
+        console.log("Valid");
+      } else {
+        console.log("Invalid");
+      }
+    },
   },
 });
 </script>
