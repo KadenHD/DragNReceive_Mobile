@@ -16,6 +16,10 @@ import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
 
+window.onload = function () {
+  document.getElementById("tab-button-Reset").classList.add("tab-selected");
+};
+
 export default defineComponent({
   name: "AuthResetTab",
   components: {
