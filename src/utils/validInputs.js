@@ -39,3 +39,11 @@ export const passwordIsValid = (v) => {
     if (!maxLength) return { valid: false, error: "Le mot de passe doit faire maximum 60 caractères" };
     return { valid: true };
 };
+
+export const confirmPasswordIsValid = (v, w) => {
+    const required = !!v;
+    const compare = v === w;
+    if (!required) return { valid: false, error: "Veuillez confirmer le mot de passe" };
+    if (!compare) return { valid: false, error: "Les mot de passe doivent être identique" };
+    return { valid: true };
+}
