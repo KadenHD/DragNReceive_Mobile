@@ -1,5 +1,5 @@
 <template>
-  <ion-page></ion-page>
+  <ion-page>Home</ion-page>
 </template>
 
 <script>
