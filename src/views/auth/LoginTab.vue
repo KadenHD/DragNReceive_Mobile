@@ -12,7 +12,9 @@
       placeholder="Saisissez votre mot de passe"
       v-model:value="data.password"
     />
-    <UiButton color="primary" @click="login()">Se connecter</UiButton>
+    <UiButton color="primary" :form="validForm" @click="login()"
+      >Se connecter</UiButton
+    >
   </AuthWrapper>
 </template>
 
@@ -40,7 +42,7 @@ export default defineComponent({
     const login = () => {
       console.log(data);
     };
-    return { data, login };
+    return { data, login, errors: {}, validForm: false };
   },
 });
 </script>
