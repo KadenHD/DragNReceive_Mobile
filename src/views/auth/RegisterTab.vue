@@ -1,41 +1,52 @@
 <template>
   <AuthWrapper title="Inscription">
-    <UiInput
-      label="Nom"
-      type="text"
-      placeholder="Saisissez votre nom"
-      alert=""
-      v-model:value="data.lastname"
-    />
-    <UiInput
-      label="Prénom"
-      type="text"
-      placeholder="Saisissez votre prénom"
-      alert=""
-      v-model:value="data.firstname"
-    />
-    <UiInput
-      label="Adresse Email"
-      type="text"
-      placeholder="Saisissez votre adresse email"
-      alert=""
-      v-model:value="data.email"
-    />
-    <UiInput
-      label="Mot de passe"
-      type="password"
-      placeholder="Saisissez votre mot de passe"
-      alert=""
-      v-model:value="data.password"
-    />
-    <UiInput
-      label="Confirmez le mot de passe"
-      type="password"
-      placeholder="Saisissez de nouveau votre mot de passe"
-      alert=""
-      v-model:value="data.confirmPassword"
-    />
-    <UiButton color="primary" @click="register()">S'inscrire</UiButton>
+    <form @submit.prevent="submitRegisterForm">
+      <UiInput
+        label="Nom"
+        type="text"
+        placeholder="Saisissez votre nom"
+        v-model:value="data.lastname"
+        :valid="lastnameIsValid(data.lastname).valid"
+        :error="lastnameIsValid(data.lastname).error"
+      />
+      <UiInput
+        label="Prénom"
+        type="text"
+        placeholder="Saisissez votre prénom"
+        v-model:value="data.firstname"
+        :valid="firstnameIsValid(data.firstname).valid"
+        :error="firstnameIsValid(data.firstname).error"
+      />
+      <UiInput
+        label="Adresse Email"
+        type="text"
+        placeholder="Saisissez votre adresse email"
+        v-model:value="data.email"
+        :valid="emailIsValid(data.email).valid"
+        :error="emailIsValid(data.email).error"
+      />
+      <UiInput
+        label="Mot de passe"
+        type="password"
+        placeholder="Saisissez votre mot de passe"
+        v-model:value="data.password"
+        :valid="passwordIsValid(data.password).valid"
+        :error="passwordIsValid(data.password).error"
+      />
+      <UiInput
+        label="Confirmez le mot de passe"
+        type="password"
+        placeholder="Saisissez de nouveau votre mot de passe"
+        v-model:value="data.confirmPassword"
+        :valid="
+          confirmPasswordIsValid(data.confirmPassword, data.password).valid
+        "
+        :error="
+          confirmPasswordIsValid(data.confirmPassword, data.password).error
+        "
+      />
+      <UiButton color="primary" type="submit">S'inscrire</UiButton>
+    </form>
   </AuthWrapper>
 </template>
 
@@ -44,6 +55,13 @@ import AuthWrapper from "@/components/auth/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
+import {
+  lastnameIsValid,
+  firstnameIsValid,
+  emailIsValid,
+  passwordIsValid,
+  confirmPasswordIsValid,
+} from "@/utils/validInputs.js";
 
 export default defineComponent({
   name: "AuthRegisterTab",
@@ -65,10 +83,27 @@ export default defineComponent({
       password: "",
       confirmPassword: "",
     });
-    const register = () => {
-      console.log(data);
+    return {
+      data,
+      lastnameIsValid,
+      firstnameIsValid,
+      emailIsValid,
+      passwordIsValid,
+      confirmPasswordIsValid,
     };
-    return { data, register };
+  },
+  methods: {
+    submitRegisterForm() {
+      const formIsValid =
+        lastnameIsValid(this.data.lastname).valid &&
+        firstnameIsValid(this.data.firstname).valid &&
+        emailIsValid(this.data.email).valid &&
+        passwordIsValid(this.data.password).valid &&
+        confirmPasswordIsValid(this.data.confirmPassword).valid;
+      if (formIsValid) {
+        console.log("Valid");
+      }
+    },
   },
 });
 </script>
