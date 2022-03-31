@@ -62,6 +62,7 @@ import {
   passwordIsValid,
   confirmPasswordIsValid,
 } from "@/utils/validInputs.js";
+import { alertController } from "@ionic/vue";
 
 export default defineComponent({
   name: "AuthRegisterTab",
@@ -101,8 +102,31 @@ export default defineComponent({
         passwordIsValid(this.data.password).valid &&
         confirmPasswordIsValid(this.data.confirmPassword).valid;
       if (formIsValid) {
-        console.log("Valid");
+        this.submitRegisterFormConfirm();
       }
+    },
+    async submitRegisterFormConfirm() {
+      const alert = await alertController.create({
+        header: "Souhaitez vous réellement créer votre compte ?",
+        message:
+          "Message Vos données personnelles seront sécurisée, de plus vous pourrez supprimer votre compte par la suite : <strong>nous ne gardons aucune donnée</strong> !",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            cssClass: "danger",
+            id: "cancel-button",
+          },
+          {
+            text: "Créer",
+            id: "confirm-button",
+            handler: () => {
+              console.log("Valid");
+            },
+          },
+        ],
+      });
+      return alert.present();
     },
   },
 });
