@@ -1,0 +1,41 @@
+export const lastnameIsValid = (v) => {
+    const required = !!v;
+    const format = v.charAt(0) === v.charAt(0).toUpperCase();
+    const maxLength = v.length <= 50;
+    if (!required) { return { valid: false, error: "Le nom est requis" }; }
+    if (!format) { return { valid: false, error: "Le nom doit commencer par une majuscule" }; }
+    if (!maxLength) { return { valid: false, error: "Le nom doit faire maximum 50 caractères" }; }
+    return { valid: true };
+}
+
+export const firstnameIsValid = (v) => {
+    const required = !!v;
+    const format = v.charAt(0) === v.charAt(0).toUpperCase();
+    const maxLength = v.length <= 50;
+    if (!required) { return { valid: false, error: "Le prénom est requis" }; }
+    if (!format) { return { valid: false, error: "Le prénom doit commencer par une majuscule" }; }
+    if (!maxLength) { return { valid: false, error: "Le prénom doit faire maximum 50 caractères" }; }
+    return { valid: true };
+}
+
+export const emailIsValid = (v) => {
+    const required = !!v;
+    const format = /.+@.+\..+/.test(v);
+    const maxLength = v.length <= 100;
+    if (!required) { return { valid: false, error: "L'e-mail est requis" }; }
+    if (!format) { return { valid: false, error: "Le format de l'e-mail doit être valide" }; }
+    if (!maxLength) { return { valid: false, error: "L'e-mail doit faire maximum 100 caractères" }; }
+    return { valid: true };
+};
+
+export const passwordIsValid = (v) => {
+    const required = !!v;
+    const format = /[A-Z]/.test(v) && /[a-z]/.test(v) && /[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v);
+    const minLength = v.length > 7;
+    const maxLength = v.length <= 60;
+    if (!required) return { valid: false, error: "Le mot de passe est requis" };
+    if (!format) return { valid: false, error: "Le mot de passe doit contenir : une majuscule, une minuscule, un chiffre, un caractère spécial" };
+    if (!minLength) return { valid: false, error: "Le mot de passe doit faire minimum 8 caractères" };
+    if (!maxLength) return { valid: false, error: "Le mot de passe doit faire maximum 60 caractères" };
+    return { valid: true };
+};
