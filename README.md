@@ -84,10 +84,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
  
-- Prendre en main la validation de formulaires
+- login (faire requêtes)
+- register (faire requêtes)
+- reset (faire requêtes + mobile token backend) => voir que faire ensuite
+- voir si on peux (lancer un composant sans path) ou (utiliser un composant dans une page et lui mettre les params (comme dans uibutton))
+
 - Modifier les theme/variables.css en fonction de la charte graphique
-- Avoir un register, login, logout fonctionnel
-- Faire le mobile token / mot de passe oublié
  
 # Sources
 
