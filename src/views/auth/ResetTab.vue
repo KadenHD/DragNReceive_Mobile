@@ -20,6 +20,7 @@ import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
 import { emailIsValid } from "@/utils/validInputs.js";
+import { alertController } from "@ionic/vue";
 
 export default defineComponent({
   name: "AuthResetTab",
@@ -41,8 +42,31 @@ export default defineComponent({
     submitResetForm() {
       const formIsValid = emailIsValid(this.data.email).valid;
       if (formIsValid) {
-        console.log("Valid");
+        this.submitResetFormConfirm();
       }
+    },
+    async submitResetFormConfirm() {
+      const alert = await alertController.create({
+        header: "Souhaitez vous recevoir votre code de réinitialisation ?",
+        message:
+          "Vous recevrez un <strong>code</strong> par email vous permettant de changer de mot de passe",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            cssClass: "danger",
+            id: "cancel-button",
+          },
+          {
+            text: "Demander",
+            id: "confirm-button",
+            handler: () => {
+              console.log("Valid");
+            },
+          },
+        ],
+      });
+      return alert.present();
     },
   },
 });
