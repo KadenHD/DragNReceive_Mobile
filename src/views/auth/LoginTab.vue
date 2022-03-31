@@ -22,10 +22,6 @@ import UiButton from "@/components/ui/Button.vue";
 import UiInput from "@/components/ui/Input.vue";
 import { defineComponent, reactive } from "vue";
 
-window.onload = function () {
-  document.getElementById("tab-button-Login").classList.add("tab-selected");
-};
-
 export default defineComponent({
   name: "AuthLoginTab",
   components: {
@@ -34,6 +30,9 @@ export default defineComponent({
     UiInput,
   },
   setup() {
+    window.onload = function () {
+      document.getElementById("tab-button-Login").classList.add("tab-selected");
+    };
     const data = reactive({
       email: "",
       password: "",
