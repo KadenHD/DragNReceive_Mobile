@@ -45,10 +45,6 @@ import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
 
-window.onload = function () {
-  document.getElementById("tab-button-Register").classList.add("tab-selected");
-};
-
 export default defineComponent({
   name: "AuthRegisterTab",
   components: {
@@ -57,6 +53,11 @@ export default defineComponent({
     UiButton,
   },
   setup() {
+    window.onload = function () {
+      document
+        .getElementById("tab-button-Register")
+        .classList.add("tab-selected");
+    };
     const data = reactive({
       lastname: "",
       firstname: "",
