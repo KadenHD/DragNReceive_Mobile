@@ -6,10 +6,11 @@
         type="text"
         placeholder="Saisissez votre adresse email"
         v-model:value="data.email"
-      />
-      <ion-text v-if="!emailIsValid(data.email).valid" color="danger">{{
-        emailIsValid(data.email).error
-      }}</ion-text>
+      >
+        <ion-text v-if="!emailIsValid(data.email).valid" color="danger"
+          >{{ emailIsValid(data.email).error }}
+        </ion-text>
+      </UiInput>
       <UiButton color="primary" type="submit">Envoyer</UiButton>
     </form>
   </AuthWrapper>
@@ -19,9 +20,8 @@
 import AuthWrapper from "@/components/auth/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
-import { defineComponent, reactive } from "vue";
 import { IonText } from "@ionic/vue";
-
+import { defineComponent, reactive } from "vue";
 import { emailIsValid } from "@/utils/validInputs.js";
 
 export default defineComponent({
