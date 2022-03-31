@@ -1,21 +1,28 @@
 <template>
   <ion-tab-bar>
     <ion-tab-button
-      class="tab-selected"
       id="Login"
       tab="Login"
-      @click="selectTab('Login')"
+      @click="this.$router.push({ name: 'Login' })"
     >
       <ion-icon :icon="logInOutline" />
       <ion-label>Connexion</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button id="Register" tab="Register" @click="selectTab('Register')">
+    <ion-tab-button
+      id="Register"
+      tab="Register"
+      @click="this.$router.push({ name: 'Register' })"
+    >
       <ion-icon :icon="createOutline" />
       <ion-label>Inscription</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button id="Reset" tab="Reset" @click="selectTab('Reset')">
+    <ion-tab-button
+      id="Reset"
+      tab="Reset"
+      @click="this.$router.push({ name: 'Reset' })"
+    >
       <ion-icon :icon="helpOutline" />
       <ion-label>Oublié</ion-label>
     </ion-tab-button>
@@ -42,6 +49,11 @@ export default defineComponent({
       helpOutline,
     };
   },
+  watch: {
+    $route() {
+      this.redirectClass(this.$route.name);
+    },
+  },
   methods: {
     addClass: function (tab) {
       document
@@ -53,7 +65,7 @@ export default defineComponent({
         .getElementById("tab-button-" + tab)
         .classList.remove("tab-selected");
     },
-    selectTab: function (tab) {
+    redirectClass: function (tab) {
       if (tab === "Login") {
         this.addClass("Login");
         this.removeClass("Register");
@@ -67,7 +79,6 @@ export default defineComponent({
         this.removeClass("Register");
         this.addClass("Reset");
       }
-      this.$router.push({ name: tab });
     },
   },
 });
