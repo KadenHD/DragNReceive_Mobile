@@ -1,10 +1,5 @@
 <template>
-  <ion-button
-    class="ui__button"
-    expand="block"
-    :color="color"
-    :disabled="!form"
-  >
+  <ion-button class="ui__button" expand="block" :color="color">
     <slot></slot>
   </ion-button>
 </template>
@@ -17,7 +12,6 @@ export default defineComponent({
   name: "UiButton",
   props: {
     color: String,
-    form: Boolean,
   },
   components: {
     IonButton,
