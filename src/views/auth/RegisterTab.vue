@@ -100,7 +100,8 @@ export default defineComponent({
         firstnameIsValid(this.data.firstname).valid &&
         emailIsValid(this.data.email).valid &&
         passwordIsValid(this.data.password).valid &&
-        confirmPasswordIsValid(this.data.confirmPassword).valid;
+        confirmPasswordIsValid(this.data.confirmPassword, this.data.password)
+          .valid;
       if (formIsValid) {
         this.submitRegisterFormConfirm();
       }
