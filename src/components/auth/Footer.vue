@@ -100,11 +100,11 @@ ion-tab-button {
     width: 40px;
     height: 2px;
   }
-  &.tab-selected::before {
-    background-color: var(--ion-color-primary);
+  &.tab-selected {
+    color: var(--ion-color-primary);
+    &::before {
+      background-color: var(--ion-color-primary);
+    }
   }
-}
-.tab-selected {
-  color: var(--ion-color-primary);
 }
 </style>
