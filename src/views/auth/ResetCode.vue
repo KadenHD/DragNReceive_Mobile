@@ -146,7 +146,10 @@ export default defineComponent({
 .formCode {
   width: 50px;
   height: 50px;
-  box-shadow: 0px 5px 25px rgba(42, 122, 227, 0.911);
+  box-shadow: 0px 5px 25px var(--ion-color-primary);
   border-radius: 15px;
+  &:hover {
+    box-shadow: 0px 5px 25px var(--ion-color-secondary);
+  }
 }
 </style>
