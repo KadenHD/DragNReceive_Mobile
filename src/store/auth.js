@@ -32,7 +32,7 @@ export default {
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
                     context.dispatch("currentUser", response.data.user);
-                    router.go({ name: 'Home' });
+                    router.go({ name: 'Auth' });
                 })
                 .catch((error) => {
                     renderAlert(error.response.data.error);
@@ -53,7 +53,7 @@ export default {
             context.commit('currentUser', null);
             localStorage.removeItem("token");
             context.commit('clearAll');
-            router.go({ name: "Home" });
+            router.go({ name: "homeRedirections" });
         },
         reset(context, data) {
             axios
