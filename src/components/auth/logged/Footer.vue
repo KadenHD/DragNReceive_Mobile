@@ -6,7 +6,7 @@
       tab=""
       @click="this.$router.push({ name: '' })"
     >
-      <ion-icon :icon="logInOutline" />
+      <ion-icon :icon="homeOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
 
@@ -16,7 +16,7 @@
       tab=""
       @click="this.$router.push({ name: '' })"
     >
-      <ion-icon :icon="logInOutline" />
+      <ion-icon :icon="personOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
 
@@ -28,7 +28,7 @@
       tab=""
       @click="this.$router.push({ name: '' })"
     >
-      <ion-icon :icon="logInOutline" />
+      <ion-icon :icon="cartOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
 
@@ -38,7 +38,7 @@
       tab=""
       @click="this.$router.push({ name: '' })"
     >
-      <ion-icon :icon="logInOutline" />
+      <ion-icon :icon="ticketOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
   </ion-tab-bar>
@@ -47,10 +47,10 @@
 <script>
 import { IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from "@ionic/vue";
 import {
-  logInOutline,
-  createOutline,
-  helpOutline,
-  earOutline,
+  homeOutline,
+  personOutline,
+  cartOutline,
+  ticketOutline,
 } from "ionicons/icons";
 import { defineComponent } from "vue";
 
@@ -65,10 +65,10 @@ export default defineComponent({
   },
   setup() {
     return {
-      logInOutline,
-      createOutline,
-      helpOutline,
-      earOutline,
+      homeOutline,
+      personOutline,
+      cartOutline,
+      ticketOutline,
     };
   },
   watch: {
