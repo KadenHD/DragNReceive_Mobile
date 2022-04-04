@@ -84,12 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
  
-- Voir comment faire pour que le /reset/id soit accessible que une fois push par  /reset 
-et qu'il n'y ai pas d'historique dessus.
-- login (faire requêtes)
-- register (faire requêtes)
-- reset (faire requêtes + mobile token backend) => voir que faire ensuite.
-- voir si on peux (lancer un composant sans path) ou (utiliser un composant dans une page et lui mettre les params (comme dans uibutton)).
+- RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
 
 - Modifier les theme/variables.css en fonction de la charte graphique.
  
