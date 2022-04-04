@@ -1,5 +1,5 @@
 <template>
-  <AuthWrapper title="Réinitialisation de mot de passe">
+  <AuthUnloggedWrapper title="Réinitialisation de mot de passe">
     <ion-text>Un code a été envoyé à votre adresse email !</ion-text><br />
     <ion-text>Saisissez le code :</ion-text>
     <form @submit.prevent="submitResetCodeForm">
@@ -64,11 +64,11 @@
       />
       <UiButton color="primary" type="submit">Changer</UiButton>
     </form>
-  </AuthWrapper>
+  </AuthUnloggedWrapper>
 </template>
 
 <script>
-import AuthWrapper from "@/components/auth/Wrapper.vue";
+import AuthUnloggedWrapper from "@/components/auth/unlogged/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { IonRow, IonCol, IonText, IonInput } from "@ionic/vue";
@@ -82,7 +82,7 @@ import { alertController } from "@ionic/vue";
 export default defineComponent({
   name: "AuthResetCode",
   components: {
-    AuthWrapper,
+    AuthUnloggedWrapper,
     UiInput,
     UiButton,
     IonRow,
