@@ -56,7 +56,7 @@ export default defineComponent({
         emailIsValid(this.data.email).valid &&
         passwordIsValid(this.data.password).valid;
       if (formIsValid) {
-        console.log("Valid");
+        this.$store.dispatch("login", this.data);
       }
     },
   },
