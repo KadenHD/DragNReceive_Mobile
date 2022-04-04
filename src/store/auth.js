@@ -32,7 +32,7 @@ export default {
                 .then((response) => {
                     localStorage.setItem("token", response.data.token);
                     context.dispatch("currentUser", response.data.user);
-                    router.go({ name: 'Auth' });
+                    router.go({ name: 'homeRedirections' });
                 })
                 .catch((error) => {
                     renderAlert(error.response.data.error);
