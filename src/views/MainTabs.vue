@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Header from "@/components/auth/logged/Header.vue";
+import Header from "@/components/auth/SearchBarHeader.vue";
 import Footer from "@/components/auth/logged/Footer.vue";
 import { IonPage, IonTabs, IonRouterOutlet } from "@ionic/vue";
 import { defineComponent } from "vue";
