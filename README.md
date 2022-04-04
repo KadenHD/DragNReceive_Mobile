@@ -83,10 +83,12 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 > JSON
 
 # To-do
- 
-- RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
 
-- Modifier les theme/variables.css en fonction de la charte graphique.
+- Rendre les header et footer indépendant des pages (plus libertés)
+- ion-nav permet de faire de l'affichage interne de composant sans router (utile pour le profile ?)
+- Faire la page du footer
+
+- RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
  
 # Sources
 
