@@ -27,7 +27,7 @@ export default [
                 component: () => import('@/views/auth/ResetTab.vue'),
             },
             {
-                path: 'reset/:id',
+                path: 'reset/:userId/:id',
                 name: 'ResetCode',
                 component: () => import('@/views/auth/ResetCode.vue')
             }
