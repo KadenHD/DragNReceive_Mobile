@@ -1,5 +1,5 @@
 <template>
-  <AuthWrapper title="Inscription">
+  <AuthUnloggedWrapper title="Inscription">
     <form @submit.prevent="submitRegisterForm">
       <UiInput
         label="Nom"
@@ -47,11 +47,11 @@
       />
       <UiButton color="primary" type="submit">S'inscrire</UiButton>
     </form>
-  </AuthWrapper>
+  </AuthUnloggedWrapper>
 </template>
 
 <script>
-import AuthWrapper from "@/components/auth/Wrapper.vue";
+import AuthUnloggedWrapper from "@/components/auth/unlogged/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
@@ -67,7 +67,7 @@ import { alertController } from "@ionic/vue";
 export default defineComponent({
   name: "AuthRegisterTab",
   components: {
-    AuthWrapper,
+    AuthUnloggedWrapper,
     UiInput,
     UiButton,
   },
