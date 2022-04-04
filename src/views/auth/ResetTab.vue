@@ -61,8 +61,7 @@ export default defineComponent({
             text: "Demander",
             id: "confirm-button",
             handler: () => {
-              console.log("Valid");
-              this.$router.push({ name: "ResetCode", params: { id: "1" } });
+              this.$store.dispatch("reset", this.data);
             },
           },
         ],
