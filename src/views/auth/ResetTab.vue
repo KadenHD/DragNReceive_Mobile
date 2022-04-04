@@ -1,5 +1,5 @@
 <template>
-  <AuthWrapper title="Réinitialisation de mot de passe">
+  <AuthUnloggedWrapper title="Réinitialisation de mot de passe">
     <form @submit.prevent="submitResetForm">
       <UiInput
         label="Adresse Email"
@@ -11,11 +11,11 @@
       />
       <UiButton color="primary" type="submit">Envoyer</UiButton>
     </form>
-  </AuthWrapper>
+  </AuthUnloggedWrapper>
 </template>
 
 <script>
-import AuthWrapper from "@/components/auth/Wrapper.vue";
+import AuthUnloggedWrapper from "@/components/auth/unlogged/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
@@ -25,7 +25,7 @@ import { alertController } from "@ionic/vue";
 export default defineComponent({
   name: "AuthResetTab",
   components: {
-    AuthWrapper,
+    AuthUnloggedWrapper,
     UiInput,
     UiButton,
   },
