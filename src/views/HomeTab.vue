@@ -1,7 +1,5 @@
 <template>
-  <ion-page>
-    <a href="javascript:void(0)" @click="logoutClick">Déconnexion</a>
-  </ion-page>
+  <ion-page> Home </ion-page>
 </template>
 
 <script>
@@ -13,10 +11,10 @@ export default defineComponent({
   components: {
     IonPage,
   },
-  methods: {
-    logoutClick() {
-      this.$store.dispatch("logout");
-    },
+  setup() {
+    window.onload = function () {
+      document.getElementById("tab-button-Home").classList.add("tab-selected");
+    };
   },
 });
 </script>
