@@ -60,7 +60,7 @@ export default {
                 .post("forgotClient", data)
                 .then((response) => {
                     renderAlert(response.data.success);
-                    router.push({ name: "ForgotCode" });
+                    router.push({ name: "ResetCode", params: { userId: response.data.userId, id: response.data.id } });
                 })
                 .catch((error) => {
                     renderAlert(error.response.data.error);
@@ -68,14 +68,14 @@ export default {
         },
         resetCode(context, data) {
             axios
-                .post("resetClient/" + data.userId + "/" + data.token, data)
+                .post("resetClient/" + data.userId + "/" + data.id, data)
                 .then((response) => {
                     renderAlert(response.data.success);
                     router.push({ name: "Login" });
                 })
                 .catch((error) => {
                     renderAlert(error.response.data.error);
-                    router.push({ name: "Forgot" });
+                    router.push({ name: "Reset" });
                 });
         },
         clearAll(context) {
