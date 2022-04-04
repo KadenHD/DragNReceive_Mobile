@@ -1,7 +1,7 @@
 import store from '@/store';
 
 export const homeRedirections = (to, from, next) => {
-    if (store.getters.currentUser || localStorage.getItem('token')) { next({ name: 'Home' }); }
+    if (store.getters.currentUser || localStorage.getItem('token')) { next({ name: 'Auth' }); }
     else { next({ name: 'NotAuth' }); }
 }
 
