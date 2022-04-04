@@ -83,6 +83,7 @@ export default defineComponent({
       email: "",
       password: "",
       confirmPassword: "",
+      roleId: "4",
     });
     return {
       data,
@@ -122,7 +123,7 @@ export default defineComponent({
             text: "Créer",
             id: "confirm-button",
             handler: () => {
-              console.log("Valid");
+              this.$store.dispatch("register", this.data);
             },
           },
         ],
