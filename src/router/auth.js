@@ -2,7 +2,7 @@ import { isNotLogged } from '@/utils/beforeEnter';
 
 export default [
     {
-        path: '/auth/',
+        path: '/auth',
         component: () => import('@/views/auth/AuthTabs.vue'),
         beforeEnter: isNotLogged,
         children: [
