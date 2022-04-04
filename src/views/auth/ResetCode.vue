@@ -1,12 +1,12 @@
 <template>
   <AuthWrapper title="Réinitialisation de mot de passe">
-    <ion-text>Un code a été envoyé à votre adresse email !</ion-text>
+    <ion-text>Un code a été envoyé à votre adresse email !</ion-text><br />
     <ion-text>Saisissez le code :</ion-text>
     <form @submit.prevent="submitResetCodeForm">
       <ion-row>
         <ion-col>
           <ion-input
-            type="number"
+            type="tel"
             maxlength="1"
             v-model="data.one"
             inputmode="numeric"
@@ -15,7 +15,7 @@
         </ion-col>
         <ion-col>
           <ion-input
-            type="number"
+            type="tel"
             maxlength="1"
             v-model="data.two"
             inputmode="numeric"
@@ -24,7 +24,7 @@
         </ion-col>
         <ion-col>
           <ion-input
-            type="number"
+            type="tel"
             maxlength="1"
             v-model="data.three"
             inputmode="numeric"
@@ -33,7 +33,7 @@
         </ion-col>
         <ion-col>
           <ion-input
-            type="number"
+            type="tel"
             maxlength="1"
             v-model="data.four"
             inputmode="numeric"
@@ -92,12 +92,15 @@ export default defineComponent({
   },
   setup() {
     const data = reactive({
+      code: "",
       one: "",
       two: "",
       three: "",
       four: "",
       password: "",
       confirmPassword: "",
+      id: "",
+      userId: "",
     });
     return { data, passwordIsValid, confirmPasswordIsValid };
   },
@@ -131,7 +134,14 @@ export default defineComponent({
             text: "Créer",
             id: "confirm-button",
             handler: () => {
-              console.log("Valid");
+              this.data.code =
+                `${this.data.one}` +
+                `${this.data.two}` +
+                `${this.data.three}` +
+                `${this.data.four}`;
+              this.data.userId = this.$route.params.userId;
+              this.data.id = this.$route.params.id;
+              this.$store.dispatch("resetCode", this.data);
             },
           },
         ],
@@ -149,7 +159,7 @@ export default defineComponent({
   box-shadow: 0px 5px 25px var(--ion-color-primary);
   border-radius: 15px;
   &:hover {
-    box-shadow: 0px 5px 25px var(--ion-color-secondary);
+    box-shadow: 0px 5px 45px var(--ion-color-primary);
   }
 }
 </style>
