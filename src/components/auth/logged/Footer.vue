@@ -45,8 +45,13 @@
 </template>
 
 <script>
-import { IonTabBar, IonTabButton, IonIcon, IonLabel } from "@ionic/vue";
-import { logInOutline, createOutline, helpOutline } from "ionicons/icons";
+import { IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from "@ionic/vue";
+import {
+  logInOutline,
+  createOutline,
+  helpOutline,
+  earOutline,
+} from "ionicons/icons";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -56,12 +61,14 @@ export default defineComponent({
     IonTabButton,
     IonIcon,
     IonLabel,
+    IonImg,
   },
   setup() {
     return {
       logInOutline,
       createOutline,
       helpOutline,
+      earOutline,
     };
   },
   watch: {
