@@ -2,24 +2,31 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 
 import authRouter from "./auth.js";
 
-import { homeRedirections, isLogged } from '@/utils/beforeEnter';
+import { homeRedirections, isLogged } from '@/utils/beforeEnter.js';
 
 const routes = [
   ...authRouter,
   {
-    path: '/',
-    name: 'homeRedirections',
-    beforeEnter: homeRedirections
-  },
-  {
-    path: '/home',
-    name: 'Home',
-    component: () => import('@/views/Home.vue'),
-    beforeEnter: isLogged
+    path: '/client',
+    component: () => import('@/views/MainTabs.vue'),
+    beforeEnter: isLogged,
+    children: [
+      {
+        path: '',
+        name: 'Auth',
+        redirect: '/client/home'
+      },
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/HomeTab.vue'),
+      },
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: { name: 'homeRedirections' }
+    name: 'homeRedirections',
+    beforeEnter: homeRedirections,
   },
 ]
 
