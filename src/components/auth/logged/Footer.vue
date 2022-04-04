@@ -2,19 +2,19 @@
   <ion-tab-bar>
     <ion-tab-button
       class="borderRadiusLeft"
-      id=""
-      tab=""
-      @click="this.$router.push({ name: '' })"
+      id="Home"
+      tab="Home"
+      @click="this.$router.push({ name: 'Home' })"
     >
       <ion-icon :icon="homeOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
 
     <ion-tab-button
-      class="borderRadiusBeforeCenter"
-      id=""
-      tab=""
-      @click="this.$router.push({ name: '' })"
+      class="borderRadiusRight"
+      id="Profile"
+      tab="Profile"
+      @click="this.$router.push({ name: 'Profile' })"
     >
       <ion-icon :icon="personOutline" />
       <ion-label></ion-label>
@@ -23,10 +23,10 @@
     <ion-img src="assets/img/Jimdo/DragNReceive/hexaName/logo.svg"></ion-img>
 
     <ion-tab-button
-      class="borderRadiusAfterCenter"
-      id=""
-      tab=""
-      @click="this.$router.push({ name: '' })"
+      class="borderRadiusLeft"
+      id="Cart"
+      tab="Cart"
+      @click="this.$router.push({ name: 'Cart' })"
     >
       <ion-icon :icon="cartOutline" />
       <ion-label></ion-label>
@@ -34,9 +34,9 @@
 
     <ion-tab-button
       class="borderRadiusRight"
-      id=""
-      tab=""
-      @click="this.$router.push({ name: '' })"
+      id="Tickets"
+      tab="Tickets"
+      @click="this.$router.push({ name: 'Tickets' })"
     >
       <ion-icon :icon="ticketOutline" />
       <ion-label></ion-label>
@@ -88,18 +88,26 @@ export default defineComponent({
         .classList.remove("tab-selected");
     },
     redirectClass: function (tab) {
-      if (tab === "Login") {
-        this.addClass("Login");
-        this.removeClass("Register");
-        this.removeClass("Reset");
-      } else if (tab === "Register") {
-        this.removeClass("Login");
-        this.addClass("Register");
-        this.removeClass("Reset");
-      } else if (tab === "Reset") {
-        this.removeClass("Login");
-        this.removeClass("Register");
-        this.addClass("Reset");
+      if (tab === "Home") {
+        this.addClass("Home");
+        this.removeClass("Profile");
+        this.removeClass("Cart");
+        this.removeClass("Tickets");
+      } else if (tab === "Profile") {
+        this.removeClass("Home");
+        this.addClass("Profile");
+        this.removeClass("Cart");
+        this.removeClass("Tickets");
+      } else if (tab === "Cart") {
+        this.removeClass("Home");
+        this.removeClass("Profile");
+        this.addClass("Cart");
+        this.removeClass("Tickets");
+      } else if (tab === "Tickets") {
+        this.removeClass("Home");
+        this.removeClass("Profile");
+        this.removeClass("Cart");
+        this.addClass("Tickets");
       }
     },
   },
@@ -108,36 +116,12 @@ export default defineComponent({
 
 <style lang="scss">
 ion-tab-bar {
+  bottom: 20px;
   position: relative;
   width: 92%;
   border: 0;
-  bottom: 20px;
   margin: 0 auto;
   background-color: transparent;
-  box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
-}
-.buttonCenter {
-  height: 100%;
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-}
-.borderRadiusLeft {
-  border-radius: 16px 0px 0px 16px;
-}
-.borderRadiusRight {
-  border-radius: 0px 16px 16px 0px;
-}
-.borderRadiusBeforeCenter {
-  border-radius: 0px 16px 16px 0px;
-  margin-right: 10px;
-}
-.borderRadiusAfterCenter {
-  border-radius: 16px 0px 0px 16px;
-  margin-left: 10px;
 }
 ion-tab-button {
   &::before {
@@ -152,6 +136,14 @@ ion-tab-button {
     &::before {
       background-color: var(--ion-color-primary);
     }
+  }
+  &.borderRadiusRight {
+    border-radius: 0px 16px 16px 0px;
+    margin-right: 10px;
+  }
+  &.borderRadiusLeft {
+    border-radius: 16px 0px 0px 16px;
+    margin-left: 10px;
   }
 }
 </style>
