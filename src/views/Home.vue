@@ -1,7 +1,7 @@
 <template>
-  <ion-page
-    ><a href="javascript:void(0)" @click="logoutClick">Déconnexion</a></ion-page
-  >
+  <ion-page>
+    <a href="javascript:void(0)" @click="logoutClick">Déconnexion</a>
+  </ion-page>
 </template>
 
 <script>
