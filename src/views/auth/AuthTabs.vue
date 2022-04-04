@@ -1,24 +1,24 @@
 <template>
   <ion-page>
     <ion-tabs>
-      <AuthUnloggedHeader />
+      <Header />
       <ion-router-outlet></ion-router-outlet>
-      <AuthUnloggedFooter />
+      <Footer />
     </ion-tabs>
   </ion-page>
 </template>
 
 <script>
-import AuthUnloggedHeader from "@/components/auth/unlogged/Header.vue";
-import AuthUnloggedFooter from "@/components/auth/unlogged/Footer.vue";
+import Header from "@/components/auth/DefaultHeader.vue";
+import Footer from "@/components/auth/unlogged/Footer.vue";
 import { IonPage, IonTabs, IonRouterOutlet } from "@ionic/vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "AuthTabs",
   components: {
-    AuthUnloggedHeader,
-    AuthUnloggedFooter,
+    Header,
+    Footer,
     IonPage,
     IonTabs,
     IonRouterOutlet,
