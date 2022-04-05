@@ -4,6 +4,7 @@
       <div class="wrapper">
         <ion-card>
           <ion-card-content>
+            <a v-if="this.$route.name === 'ResetCode'" href="/"> Annuler</a>
             <ion-card-header>
               <ion-card-title>{{ title }}</ion-card-title>
             </ion-card-header>
