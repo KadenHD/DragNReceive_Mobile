@@ -1,5 +1,5 @@
 <template>
-  <AuthUnloggedWrapper title="Connexion">
+  <Wrapper title="Connexion">
     <form @submit.prevent="submitLoginForm">
       <UiInput
         label="Adresse Email"
@@ -19,11 +19,11 @@
       />
       <UiButton color="primary" type="submit">Se connecter</UiButton>
     </form>
-  </AuthUnloggedWrapper>
+  </Wrapper>
 </template>
 
 <script>
-import AuthUnloggedWrapper from "@/components/auth/unlogged/Wrapper.vue";
+import Wrapper from "@/components/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
 import { defineComponent, reactive } from "vue";
@@ -32,7 +32,7 @@ import { emailIsValid, passwordIsValid } from "@/utils/validInputs.js";
 export default defineComponent({
   name: "AuthLoginTab",
   components: {
-    AuthUnloggedWrapper,
+    Wrapper,
     UiInput,
     UiButton,
   },
