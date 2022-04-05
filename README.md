@@ -87,6 +87,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Rendre les header et footer indépendant des pages (plus libertés)
 - ion-nav permet de faire de l'affichage interne de composant sans router (utile pour le profile ?)
 - Faire la page du footer
+- https://ionicframework.com/docs/api/searchbar (regarder le source code, permet de dynamiser la searchbar)
 
 - RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
  
