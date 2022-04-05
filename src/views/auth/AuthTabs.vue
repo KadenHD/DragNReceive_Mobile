@@ -1,24 +1,24 @@
 <template>
   <ion-page>
     <ion-tabs>
-      <Header />
+      <DefaultHeader />
       <ion-router-outlet></ion-router-outlet>
-      <Footer v-if="this.$route.name != 'ResetCode'" />
+      <UnloggedFooter v-if="this.$route.name != 'ResetCode'" />
     </ion-tabs>
   </ion-page>
 </template>
 
 <script>
-import Header from "@/components/auth/DefaultHeader.vue";
-import Footer from "@/components/auth/unlogged/Footer.vue";
+import DefaultHeader from "@/components/DefaultHeader.vue";
+import UnloggedFooter from "@/components/UnloggedFooter.vue";
 import { IonPage, IonTabs, IonRouterOutlet } from "@ionic/vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "AuthTabs",
   components: {
-    Header,
-    Footer,
+    DefaultHeader,
+    UnloggedFooter,
     IonPage,
     IonTabs,
     IonRouterOutlet,
