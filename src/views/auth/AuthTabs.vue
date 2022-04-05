@@ -3,7 +3,7 @@
     <ion-tabs>
       <Header />
       <ion-router-outlet></ion-router-outlet>
-      <Footer />
+      <Footer v-if="this.$route.name != 'ResetCode'" />
     </ion-tabs>
   </ion-page>
 </template>
