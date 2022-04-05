@@ -19,7 +19,7 @@ export default [
             {
                 path: 'profile',
                 name: 'Profile',
-                component: () => import('@/views/ProfileTab.vue'),
+                component: () => import('@/views/profile/ProfileTab.vue'),
             },
             {
                 path: 'Cart',
