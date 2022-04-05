@@ -27,7 +27,7 @@ import {
 } from "@ionic/vue";
 
 export default defineComponent({
-  name: "AuthUnloggedWrapper",
+  name: "Wrapper",
   props: {
     title: String,
   },

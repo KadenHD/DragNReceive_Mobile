@@ -13,7 +13,7 @@ import { defineComponent } from "vue";
 import { IonHeader, IonToolbar, IonSearchbar } from "@ionic/vue";
 
 export default defineComponent({
-  name: "AuthSearchBarHeader",
+  name: "SearchBarHeader",
   components: {
     IonHeader,
     IonToolbar,

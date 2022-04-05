@@ -35,7 +35,7 @@ import { logInOutline, createOutline, helpOutline } from "ionicons/icons";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AuthUnloggedFooter",
+  name: "UnloggedFooter",
   components: {
     IonTabBar,
     IonTabButton,

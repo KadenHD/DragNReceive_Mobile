@@ -11,7 +11,7 @@ import { defineComponent } from "vue";
 import { IonHeader, IonToolbar, IonTitle } from "@ionic/vue";
 
 export default defineComponent({
-  name: "AuthDefaultHeader",
+  name: "DefaultHeader",
   components: {
     IonHeader,
     IonToolbar,

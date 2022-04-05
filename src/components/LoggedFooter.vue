@@ -55,7 +55,7 @@ import {
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "AuthUnloggedFooter",
+  name: "LoggedFooter",
   components: {
     IonTabBar,
     IonTabButton,
