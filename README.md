@@ -83,7 +83,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 > JSON
 
 # To-do
-
+- voir le changement d'image et ses inputs
 - https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
 
 - RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
