@@ -1,18 +1,26 @@
 <template>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons>
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-page>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons>
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+  </ion-page>
 </template>
 
 <script>
-import { IonButtons, IonHeader, IonToolbar } from "@ionic/vue";
+import {
+  IonPage,
+  IonButtons,
+  IonHeader,
+  IonToolbar,
+  IonBackButton,
+} from "@ionic/vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  components: { IonButtons, IonHeader, IonToolbar },
+  components: { IonPage, IonButtons, IonHeader, IonToolbar, IonBackButton },
 });
 </script>
