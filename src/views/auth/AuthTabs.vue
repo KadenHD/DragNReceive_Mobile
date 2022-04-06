@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-tabs>
-      <DefaultHeader />
+      <DefaultHeader v-if="this.$route.name != 'ResetCode'" />
       <ion-router-outlet></ion-router-outlet>
       <UnloggedFooter v-if="this.$route.name != 'ResetCode'" />
     </ion-tabs>

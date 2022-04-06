@@ -22,11 +22,6 @@ export default defineComponent({
     IonIcon,
   },
   setup() {
-    window.onload = function () {
-      document
-        .getElementById("tab-button-Profile")
-        .classList.add("tab-selected");
-    };
     return { cogOutline };
   },
 });

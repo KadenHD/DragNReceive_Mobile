@@ -1,59 +1,62 @@
 <template>
-  <Wrapper title="Inscription">
-    <form @submit.prevent="submitRegisterForm">
-      <UiInput
-        label="Nom"
-        type="text"
-        placeholder="Saisissez votre nom"
-        v-model:value="data.lastname"
-        :valid="lastnameIsValid(data.lastname).valid"
-        :error="lastnameIsValid(data.lastname).error"
-      />
-      <UiInput
-        label="Prénom"
-        type="text"
-        placeholder="Saisissez votre prénom"
-        v-model:value="data.firstname"
-        :valid="firstnameIsValid(data.firstname).valid"
-        :error="firstnameIsValid(data.firstname).error"
-      />
-      <UiInput
-        label="Adresse Email"
-        type="text"
-        placeholder="Saisissez votre adresse email"
-        v-model:value="data.email"
-        :valid="emailIsValid(data.email).valid"
-        :error="emailIsValid(data.email).error"
-      />
-      <UiInput
-        label="Mot de passe"
-        type="password"
-        placeholder="Saisissez votre mot de passe"
-        v-model:value="data.password"
-        :valid="passwordIsValid(data.password).valid"
-        :error="passwordIsValid(data.password).error"
-      />
-      <UiInput
-        label="Confirmez le mot de passe"
-        type="password"
-        placeholder="Saisissez de nouveau votre mot de passe"
-        v-model:value="data.confirmPassword"
-        :valid="
-          confirmPasswordIsValid(data.confirmPassword, data.password).valid
-        "
-        :error="
-          confirmPasswordIsValid(data.confirmPassword, data.password).error
-        "
-      />
-      <UiButton color="primary" type="submit">S'inscrire</UiButton>
-    </form>
-  </Wrapper>
+  <ion-page>
+    <Wrapper title="Inscription">
+      <form @submit.prevent="submitRegisterForm">
+        <UiInput
+          label="Nom"
+          type="text"
+          placeholder="Saisissez votre nom"
+          v-model:value="data.lastname"
+          :valid="lastnameIsValid(data.lastname).valid"
+          :error="lastnameIsValid(data.lastname).error"
+        />
+        <UiInput
+          label="Prénom"
+          type="text"
+          placeholder="Saisissez votre prénom"
+          v-model:value="data.firstname"
+          :valid="firstnameIsValid(data.firstname).valid"
+          :error="firstnameIsValid(data.firstname).error"
+        />
+        <UiInput
+          label="Adresse Email"
+          type="text"
+          placeholder="Saisissez votre adresse email"
+          v-model:value="data.email"
+          :valid="emailIsValid(data.email).valid"
+          :error="emailIsValid(data.email).error"
+        />
+        <UiInput
+          label="Mot de passe"
+          type="password"
+          placeholder="Saisissez votre mot de passe"
+          v-model:value="data.password"
+          :valid="passwordIsValid(data.password).valid"
+          :error="passwordIsValid(data.password).error"
+        />
+        <UiInput
+          label="Confirmez le mot de passe"
+          type="password"
+          placeholder="Saisissez de nouveau votre mot de passe"
+          v-model:value="data.confirmPassword"
+          :valid="
+            confirmPasswordIsValid(data.confirmPassword, data.password).valid
+          "
+          :error="
+            confirmPasswordIsValid(data.confirmPassword, data.password).error
+          "
+        />
+        <UiButton color="primary" type="submit">S'inscrire</UiButton>
+      </form>
+    </Wrapper>
+  </ion-page>
 </template>
 
 <script>
 import Wrapper from "@/components/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
+import { IonPage } from "@ionic/vue";
 import { defineComponent, reactive } from "vue";
 import {
   lastnameIsValid,
@@ -70,13 +73,9 @@ export default defineComponent({
     Wrapper,
     UiInput,
     UiButton,
+    IonPage,
   },
   setup() {
-    window.onload = function () {
-      document
-        .getElementById("tab-button-Register")
-        .classList.add("tab-selected");
-    };
     const data = reactive({
       lastname: "",
       firstname: "",

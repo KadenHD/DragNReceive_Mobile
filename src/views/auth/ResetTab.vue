@@ -1,23 +1,26 @@
 <template>
-  <Wrapper title="Réinitialisation de mot de passe">
-    <form @submit.prevent="submitResetForm">
-      <UiInput
-        label="Adresse Email"
-        type="text"
-        placeholder="Saisissez votre adresse email"
-        v-model:value="data.email"
-        :valid="emailIsValid(data.email).valid"
-        :error="emailIsValid(data.email).error"
-      />
-      <UiButton color="primary" type="submit">Envoyer</UiButton>
-    </form>
-  </Wrapper>
+  <ion-page>
+    <Wrapper title="Réinitialisation de mot de passe">
+      <form @submit.prevent="submitResetForm">
+        <UiInput
+          label="Adresse Email"
+          type="text"
+          placeholder="Saisissez votre adresse email"
+          v-model:value="data.email"
+          :valid="emailIsValid(data.email).valid"
+          :error="emailIsValid(data.email).error"
+        />
+        <UiButton color="primary" type="submit">Envoyer</UiButton>
+      </form>
+    </Wrapper>
+  </ion-page>
 </template>
 
 <script>
 import Wrapper from "@/components/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
 import UiButton from "@/components/ui/Button.vue";
+import { IonPage } from "@ionic/vue";
 import { defineComponent, reactive } from "vue";
 import { emailIsValid } from "@/utils/validInputs.js";
 import { alertController } from "@ionic/vue";
@@ -28,11 +31,9 @@ export default defineComponent({
     Wrapper,
     UiInput,
     UiButton,
+    IonPage,
   },
   setup() {
-    window.onload = function () {
-      document.getElementById("tab-button-Reset").classList.add("tab-selected");
-    };
     const data = reactive({
       email: "",
     });

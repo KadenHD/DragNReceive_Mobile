@@ -1,6 +1,17 @@
 <template>
   <ion-tab-bar>
     <ion-tab-button
+      v-if="this.$route.name === 'Home'"
+      class="borderRadiusLeft tab-selected"
+      id="Home"
+      tab="Home"
+      @click="this.$router.push({ name: 'Home' })"
+    >
+      <ion-icon :icon="homeOutline" />
+      <ion-label></ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       class="borderRadiusLeft"
       id="Home"
       tab="Home"
@@ -11,6 +22,17 @@
     </ion-tab-button>
 
     <ion-tab-button
+      v-if="this.$route.name === 'Profile'"
+      class="borderRadiusRight tab-selected"
+      id="Profile"
+      tab="Profile"
+      @click="this.$router.push({ name: 'Profile' })"
+    >
+      <ion-icon :icon="personOutline" />
+      <ion-label></ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       class="borderRadiusRight"
       id="Profile"
       tab="Profile"
@@ -23,6 +45,17 @@
     <ion-img src="assets/img/Jimdo/DragNReceive/hexaName/logo.svg"></ion-img>
 
     <ion-tab-button
+      v-if="this.$route.name === 'Cart'"
+      class="borderRadiusLeft tab-selected"
+      id="Cart"
+      tab="Cart"
+      @click="this.$router.push({ name: 'Cart' })"
+    >
+      <ion-icon :icon="cartOutline" />
+      <ion-label></ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       class="borderRadiusLeft"
       id="Cart"
       tab="Cart"
@@ -33,6 +66,17 @@
     </ion-tab-button>
 
     <ion-tab-button
+      v-if="this.$route.name === 'Tickets'"
+      class="borderRadiusRight tab-selected"
+      id="Tickets"
+      tab="Tickets"
+      @click="this.$router.push({ name: 'Tickets' })"
+    >
+      <ion-icon :icon="ticketOutline" />
+      <ion-label></ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       class="borderRadiusRight"
       id="Tickets"
       tab="Tickets"
@@ -70,46 +114,6 @@ export default defineComponent({
       cartOutline,
       ticketOutline,
     };
-  },
-  watch: {
-    $route() {
-      this.redirectClass(this.$route.name);
-    },
-  },
-  methods: {
-    addClass: function (tab) {
-      document
-        .getElementById("tab-button-" + tab)
-        .classList.add("tab-selected");
-    },
-    removeClass: function (tab) {
-      document
-        .getElementById("tab-button-" + tab)
-        .classList.remove("tab-selected");
-    },
-    redirectClass: function (tab) {
-      if (tab === "Home") {
-        this.addClass("Home");
-        this.removeClass("Profile");
-        this.removeClass("Cart");
-        this.removeClass("Tickets");
-      } else if (tab === "Profile") {
-        this.removeClass("Home");
-        this.addClass("Profile");
-        this.removeClass("Cart");
-        this.removeClass("Tickets");
-      } else if (tab === "Cart") {
-        this.removeClass("Home");
-        this.removeClass("Profile");
-        this.addClass("Cart");
-        this.removeClass("Tickets");
-      } else if (tab === "Tickets") {
-        this.removeClass("Home");
-        this.removeClass("Profile");
-        this.removeClass("Cart");
-        this.addClass("Tickets");
-      }
-    },
   },
 });
 </script>

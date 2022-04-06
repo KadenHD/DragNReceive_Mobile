@@ -11,10 +11,6 @@ export default defineComponent({
   components: {
     IonPage,
   },
-  setup() {
-    window.onload = function () {
-      document.getElementById("tab-button-Cart").classList.add("tab-selected");
-    };
-  },
+  setup() {},
 });
 </script>

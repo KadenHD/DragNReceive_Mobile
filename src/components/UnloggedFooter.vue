@@ -1,6 +1,17 @@
 <template>
   <ion-tab-bar>
     <ion-tab-button
+      v-if="this.$route.name === 'Login'"
+      class="tab-selected"
+      id="Login"
+      tab="Login"
+      @click="this.$router.push({ name: 'Login' })"
+    >
+      <ion-icon :icon="logInOutline" />
+      <ion-label>Connexion</ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       id="Login"
       tab="Login"
       @click="this.$router.push({ name: 'Login' })"
@@ -10,6 +21,17 @@
     </ion-tab-button>
 
     <ion-tab-button
+      v-if="this.$route.name === 'Register'"
+      class="tab-selected"
+      id="Register"
+      tab="Register"
+      @click="this.$router.push({ name: 'Register' })"
+    >
+      <ion-icon :icon="createOutline" />
+      <ion-label>Inscription</ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       id="Register"
       tab="Register"
       @click="this.$router.push({ name: 'Register' })"
@@ -19,6 +41,17 @@
     </ion-tab-button>
 
     <ion-tab-button
+      v-if="this.$route.name === 'Reset'"
+      class="tab-selected"
+      id="Reset"
+      tab="Reset"
+      @click="this.$router.push({ name: 'Reset' })"
+    >
+      <ion-icon :icon="helpOutline" />
+      <ion-label>Oublié</ion-label>
+    </ion-tab-button>
+    <ion-tab-button
+      v-else
       id="Reset"
       tab="Reset"
       @click="this.$router.push({ name: 'Reset' })"
@@ -48,38 +81,6 @@ export default defineComponent({
       createOutline,
       helpOutline,
     };
-  },
-  watch: {
-    $route() {
-      this.redirectClass(this.$route.name);
-    },
-  },
-  methods: {
-    addClass: function (tab) {
-      document
-        .getElementById("tab-button-" + tab)
-        .classList.add("tab-selected");
-    },
-    removeClass: function (tab) {
-      document
-        .getElementById("tab-button-" + tab)
-        .classList.remove("tab-selected");
-    },
-    redirectClass: function (tab) {
-      if (tab === "Login") {
-        this.addClass("Login");
-        this.removeClass("Register");
-        this.removeClass("Reset");
-      } else if (tab === "Register") {
-        this.removeClass("Login");
-        this.addClass("Register");
-        this.removeClass("Reset");
-      } else if (tab === "Reset") {
-        this.removeClass("Login");
-        this.removeClass("Register");
-        this.addClass("Reset");
-      }
-    },
   },
 });
 </script>
