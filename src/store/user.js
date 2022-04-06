@@ -20,6 +20,7 @@ export default {
                 })
                 .then((response) => {
                     renderAlert(response.data.success);
+                    context.dispatch("setCurrentUser");
                     router.push({ name: 'Profile' });
                 })
                 .catch((error) => {
