@@ -48,6 +48,14 @@ export const confirmPasswordIsValid = (v, w) => {
     return { valid: true };
 }
 
+export const newPasswordIsValid = (v, w) => {
+    const required = !!v;
+    const compare = v === w;
+    if (!required) return { valid: false, error: "Le nouveau mot de passe est requis" };
+    if (compare) return { valid: false, error: "Les mot de passe doivent être différents" };
+    return { valid: true };
+}
+
 export const photoIsValid = (v) => {
     const required = !!v;
     let format = false;
