@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <ion-button>
+      <ion-button @click="this.$router.push({ name: 'ProfileParameters' })">
         <ion-icon :icon="cogOutline"></ion-icon>
       </ion-button>
     </ion-content>
