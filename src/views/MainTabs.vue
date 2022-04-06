@@ -2,9 +2,21 @@
   <ion-page>
     <ion-tabs>
       <SearchBarHeader v-if="this.$route.name === 'Home'" />
-      <DefaultHeader v-else-if="this.$route.name != 'ProfileParameters'" />
+      <DefaultHeader
+        v-else-if="
+          this.$route.name != 'ProfileParameters' &&
+          this.$route.name != 'ProfilePasswordChange' &&
+          this.$route.name != 'ProfilePhotoChange'
+        "
+      />
       <ion-router-outlet></ion-router-outlet>
-      <LoggedFooter v-if="this.$route.name != 'ProfileParameters'" />
+      <LoggedFooter
+        v-if="
+          this.$route.name != 'ProfileParameters' &&
+          this.$route.name != 'ProfilePasswordChange' &&
+          this.$route.name != 'ProfilePhotoChange'
+        "
+      />
     </ion-tabs>
   </ion-page>
 </template>
