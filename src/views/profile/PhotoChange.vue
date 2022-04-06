@@ -7,13 +7,17 @@
     </ion-header>
     <Wrapper title="Changement de photo">
       <form @submit.prevent="submitPhotoChangeForm">
-        <ion-img v-if="data.photo" :src="data.photo"></ion-img>
+        <ion-avatar v-if="data.file">
+          <img :src="data.url" />
+        </ion-avatar>
         <ion-input
           type="file"
-          placeholder="Insérez une photo"
-          accept="image/*"
-          v-model:value="data.photo"
+          accept="image/png, image/jpeg"
+          @change="onFileChange($event)"
         />
+        <ion-text v-if="photoIsValid(data.file).error" color="danger"
+          >{{ photoIsValid(data.file).error }}
+        </ion-text>
         <UiButton color="primary" type="submit">Changer</UiButton>
       </form>
     </Wrapper>
@@ -27,8 +31,9 @@ import {
   IonPage,
   IonButtons,
   IonHeader,
-  IonImg,
+  IonAvatar,
   IonInput,
+  IonText,
   IonToolbar,
   IonBackButton,
 } from "@ionic/vue";
@@ -44,30 +49,34 @@ export default defineComponent({
     IonPage,
     IonButtons,
     IonHeader,
-    IonImg,
+    IonAvatar,
     IonInput,
+    IonText,
     IonToolbar,
     IonBackButton,
   },
   setup() {
     const data = reactive({
-      photo: null,
+      file: null,
+      url: "",
     });
-    return { data };
+    return { data, photoIsValid };
   },
   methods: {
+    onFileChange(fileChangeEvent) {
+      this.data.file = fileChangeEvent.target.files[0];
+      this.data.url = URL.createObjectURL(this.data.file);
+    },
     submitPhotoChangeForm() {
-      console.log(this.data.photo);
-      const formIsValid = photoIsValid(this.data.photo).valid;
+      const formIsValid = photoIsValid(this.data.file).valid;
       if (formIsValid) {
-        this.submitPasswordChangeFormConfirm();
+        this.submitPhotoChangeFormConfirm();
       }
     },
     async submitPhotoChangeFormConfirm() {
       const alert = await alertController.create({
-        header: "Souhaitez vous réellement modifier votre mot de passe ?",
-        message:
-          "Une fois modifié, pour vous connecter de nouveau il vous faudra utiliser votre nouveau mot de passe.",
+        header: "Souhaitez vous réellement modifier votre photo de profil ?",
+        message: "Une fois modifié, la photo serra mise à jour sur notre site.",
         buttons: [
           {
             text: "Annuler",
@@ -79,7 +88,7 @@ export default defineComponent({
             text: "Confirmer",
             id: "confirm-button",
             handler: () => {
-              this.$store.dispatch("", this.data);
+              this.$store.dispatch("profileChangePhoto", this.data.file);
             },
           },
         ],
@@ -89,3 +98,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss">
+ion-avatar {
+  width: 150px !important;
+  height: 150px !important;
+  margin: 0 auto;
+}
+</style>
