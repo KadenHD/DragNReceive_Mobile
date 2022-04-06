@@ -9,11 +9,10 @@ export default {
     getters: {},
     actions: {
         profileChangePhoto(context, file) {
-            const userId = store.getters.currentUser.id;
             const formData = new FormData();
             formData.append("photo", file);
             axios
-                .put("users/" + userId, formData, {
+                .put("users/" + store.getters.currentUser.id, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -24,9 +23,21 @@ export default {
                     router.push({ name: 'Profile' });
                 })
                 .catch((error) => {
-                    renderAlert("alertError", error.response.data.error);
+                    renderAlert(error.response.data.error);
                 });
         },
+        profileChangePassword(context, data) {
+            axios
+                .put("users/" + store.getters.currentUser.id, data)
+                .then((response) => {
+                    renderAlert(response.data.success);
+                    context.dispatch("setCurrentUser");
+                    router.push({ name: 'Profile' });
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
+        }
     },
     mutations: {}
 }
