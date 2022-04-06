@@ -1,24 +1,21 @@
 <template>
-  <ion-page>
-    <ion-content>
-      <div class="wrapper">
-        <ion-card>
-          <ion-card-content>
-            <a v-if="this.$route.name === 'ResetCode'" href="/"> Annuler</a>
-            <ion-card-header>
-              <ion-card-title>{{ title }}</ion-card-title>
-            </ion-card-header>
-            <slot></slot>
-          </ion-card-content>
-        </ion-card>
-      </div> </ion-content
-  ></ion-page>
+  <ion-content>
+    <div class="wrapper">
+      <ion-card>
+        <ion-card-content>
+          <ion-card-header>
+            <ion-card-title>{{ title }}</ion-card-title>
+          </ion-card-header>
+          <slot></slot>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-content>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 import {
-  IonPage,
   IonContent,
   IonCard,
   IonCardContent,
@@ -32,7 +29,6 @@ export default defineComponent({
     title: String,
   },
   components: {
-    IonPage,
     IonContent,
     IonCard,
     IonCardContent,
