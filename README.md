@@ -84,8 +84,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- remplacer annuler par un ion back btn
-- ion-nav profile (https://cyrillacroix.net/2021/06/17/how-to-integrate-ion-nav-with-vue3-and-ionic-in-a-modal/)
 - https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
 
 - RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
