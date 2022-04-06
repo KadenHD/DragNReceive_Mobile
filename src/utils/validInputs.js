@@ -50,6 +50,10 @@ export const confirmPasswordIsValid = (v, w) => {
 
 export const photoIsValid = (v) => {
     const required = !!v;
-    if (!required) return { valid: false, error: "La photo est requise" };
+    let format = false;
+    if (!required) return { valid: false, error: "La photo est requise" }; else {
+        format = v.type === 'image/jpeg' || v.type === 'image/png';
+    }
+    if (!format) return { valid: false, error: "La photo doit être au format png ou jpg" };
     return { valid: true };
 }
