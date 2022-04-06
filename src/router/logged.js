@@ -1,5 +1,7 @@
 import { isLogged } from '@/utils/beforeEnter.js';
 
+import profileRouter from "./profile.js";
+
 export default [
     {
         path: '/client',
@@ -16,11 +18,7 @@ export default [
                 name: 'Home',
                 component: () => import('@/views/HomeTab.vue'),
             },
-            {
-                path: 'profile',
-                name: 'Profile',
-                component: () => import('@/views/profile/ProfileTab.vue'),
-            },
+            ...profileRouter,
             {
                 path: 'Cart',
                 name: 'Cart',
