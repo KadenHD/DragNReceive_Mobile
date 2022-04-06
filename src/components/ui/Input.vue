@@ -2,6 +2,7 @@
   <ion-item>
     <ion-label position="floating">{{ label }}</ion-label>
     <ion-input
+      :disabled="disabled"
       :type="type"
       :placeholder="placeholder"
       :value="value"
@@ -18,6 +19,7 @@ import { IonItem, IonLabel, IonInput, IonText } from "@ionic/vue";
 export default defineComponent({
   name: "UiInput",
   props: {
+    disabled: Boolean,
     valid: Boolean,
     error: String,
     label: String,
