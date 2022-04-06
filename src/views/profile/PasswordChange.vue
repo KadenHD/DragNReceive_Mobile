@@ -8,23 +8,23 @@
     <Wrapper title="Changement de mot de passe">
       <form @submit.prevent="submitPasswordChangeForm">
         <UiInput
-          label="Mot de passe"
+          label="Mot de passe actuel"
           type="password"
-          placeholder="Saisissez votre mot de passe"
-          v-model:value="data.password"
-          :valid="passwordIsValid(data.password).valid"
-          :error="passwordIsValid(data.password).error"
+          placeholder="Saisissez votre mot de passe actuel"
+          v-model:value="data.actualPassword"
+          :valid="passwordIsValid(data.actualPassword).valid"
+          :error="passwordIsValid(data.actualPassword).error"
         />
         <UiInput
-          label="Confirmez le mot de passe"
+          label="Nouveau mot de passe"
           type="password"
-          placeholder="Saisissez de nouveau votre mot de passe"
-          v-model:value="data.confirmPassword"
+          placeholder="Saisissez votre nouveau mot de passe"
+          v-model:value="data.newPassword"
           :valid="
-            confirmPasswordIsValid(data.confirmPassword, data.password).valid
+            newPasswordIsValid(data.newPassword, data.actualPassword).valid
           "
           :error="
-            confirmPasswordIsValid(data.confirmPassword, data.password).error
+            newPasswordIsValid(data.newPassword, data.actualPassword).error
           "
         />
         <UiButton color="primary" type="submit">Changer</UiButton>
@@ -45,10 +45,7 @@ import {
   IonBackButton,
 } from "@ionic/vue";
 import { defineComponent, reactive } from "vue";
-import {
-  passwordIsValid,
-  confirmPasswordIsValid,
-} from "@/utils/validInputs.js";
+import { passwordIsValid, newPasswordIsValid } from "@/utils/validInputs.js";
 import { alertController } from "@ionic/vue";
 
 export default defineComponent({
@@ -65,16 +62,16 @@ export default defineComponent({
   },
   setup() {
     const data = reactive({
-      password: "",
-      confirmPassword: "",
+      newPassword: "",
+      actualPassword: "",
     });
-    return { data, passwordIsValid, confirmPasswordIsValid };
+    return { data, passwordIsValid, newPasswordIsValid };
   },
   methods: {
     submitPasswordChangeForm() {
       const formIsValid =
-        passwordIsValid(this.data.password).valid &&
-        confirmPasswordIsValid(this.data.confirmPassword, this.data.password)
+        passwordIsValid(this.data.actualPassword).valid &&
+        newPasswordIsValid(this.data.newPassword, this.data.actualPassword)
           .valid;
       if (formIsValid) {
         this.submitPasswordChangeFormConfirm();
@@ -96,7 +93,7 @@ export default defineComponent({
             text: "Confirmer",
             id: "confirm-button",
             handler: () => {
-              this.$store.dispatch("", this.data);
+              this.$store.dispatch("profileChangePassword", this.data);
             },
           },
         ],
