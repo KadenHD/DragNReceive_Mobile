@@ -1,17 +1,25 @@
 <template>
   <ion-page>
-    <a href="javascript:void(0)" @click="logoutClick">Déconnexion</a>
+    <ion-content>
+      <ion-button>
+        <ion-icon :icon="cogOutline"></ion-icon>
+      </ion-button>
+    </ion-content>
   </ion-page>
 </template>
 
 <script>
-import { IonPage } from "@ionic/vue";
+import { IonPage, IonContent, IonButton, IonIcon } from "@ionic/vue";
+import { cogOutline } from "ionicons/icons";
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "ProfileTab",
   components: {
     IonPage,
+    IonContent,
+    IonButton,
+    IonIcon,
   },
   setup() {
     window.onload = function () {
@@ -19,11 +27,7 @@ export default defineComponent({
         .getElementById("tab-button-Profile")
         .classList.add("tab-selected");
     };
-  },
-  methods: {
-    logoutClick() {
-      this.$store.dispatch("logout");
-    },
+    return { cogOutline };
   },
 });
 </script>
