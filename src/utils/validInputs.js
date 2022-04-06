@@ -47,3 +47,9 @@ export const confirmPasswordIsValid = (v, w) => {
     if (!compare) return { valid: false, error: "Les mot de passe doivent être identique" };
     return { valid: true };
 }
+
+export const photoIsValid = (v) => {
+    const required = !!v;
+    if (!required) return { valid: false, error: "La photo est requise" };
+    return { valid: true };
+}
