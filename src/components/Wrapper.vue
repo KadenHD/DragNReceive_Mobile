@@ -8,12 +8,18 @@
               <ion-card-title>{{ title }}</ion-card-title>
               <ion-icon
                 class="rotate"
-                v-if="parameters"
+                v-if="profileParameters"
                 @click="this.$router.push({ name: 'ProfileParameters' })"
                 size="large"
                 :icon="cogOutline"
-              ></ion-icon
-            ></ion-row>
+              ></ion-icon>
+              <ion-icon
+                v-if="createTicket"
+                @click="this.$router.push({ name: 'TicketCreate' })"
+                size="large"
+                :icon="addOutline"
+              ></ion-icon>
+            </ion-row>
           </ion-card-header>
           <slot></slot>
         </ion-card-content>
@@ -33,12 +39,13 @@ import {
   IonCardHeader,
   IonCardTitle,
 } from "@ionic/vue";
-import { cogOutline } from "ionicons/icons";
+import { cogOutline, addOutline } from "ionicons/icons";
 
 export default defineComponent({
   name: "Wrapper",
   props: {
-    parameters: Boolean,
+    profileParameters: Boolean,
+    createTicket: Boolean,
     title: String,
   },
   components: {
@@ -51,7 +58,7 @@ export default defineComponent({
     IonCardTitle,
   },
   setup() {
-    return { cogOutline };
+    return { cogOutline, addOutline };
   },
 });
 </script>
