@@ -65,3 +65,19 @@ export const photoIsValid = (v) => {
     if (!format) return { valid: false, error: "La photo doit être au format png ou jpg" };
     return { valid: true };
 }
+
+export const titleIsValid = (v) => {
+    const required = !!v;
+    const format = v.length <= 60;
+    if (!required) return { valid: false, error: "Le titre est requis" };
+    if (!format) return { valid: false, error: "Le titre doit faire maximum 60 caractères" }
+    return { valid: true };
+}
+
+export const contentIsValid = (v) => {
+    const required = !!v;
+    const format = v.length <= 255;
+    if (!required) return { valid: false, error: "Le contenu est requis" };
+    if (!format) return { valid: false, error: "Le contenu doit faire maximum 255 caractères" }
+    return { valid: true };
+}
