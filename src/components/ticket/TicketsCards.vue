@@ -1,35 +1,50 @@
 <template>
-  <ion-row>
-    <ion-card v-for="ticket in items" v-bind:key="ticket.id" class="border">
-      <ion-card-header>
-        <ion-card-title>{{ ticket.title }}</ion-card-title>
-        <ion-card-subtitle v-if="ticket.messages.length"
-          >Vous avez {{ ticket.messages.length }} messages sur ce
-          ticket</ion-card-subtitle
-        >
-      </ion-card-header>
-      <ion-card-content>
-        {{ ticket.content }}
-      </ion-card-content>
-      <ion-item>
-        <ion-button
-          @click="
-            this.$router.push({
-              name: 'Ticket',
-              params: { id: ticket.id },
-            })
-          "
-          >Voir</ion-button
-        >
-      </ion-item>
-    </ion-card>
-  </ion-row>
+  <ion-card
+    v-for="ticket in items"
+    v-bind:key="ticket.id"
+    class="border ion-padding-bottom"
+  >
+    <ion-card-header>
+      <ion-card-title
+        >{{ ticket.title }} ({{
+          ticketStatusName(ticket.ticketStatusId)
+        }})</ion-card-title
+      >
+      <ion-card-subtitle v-if="ticket.messages.length"
+        >Vous avez {{ ticket.messages.length }} messages sur ce
+        ticket</ion-card-subtitle
+      >
+    </ion-card-header>
+    <ion-card-content>
+      {{ ticket.content }} <br />
+      <u>Date de création :</u> <br />
+      {{ reformatedDates(ticket.createdAt) }} <br />
+      <u>Dernière modification :</u> <br />
+      {{ reformatedDates(ticket.updatedAt) }}
+    </ion-card-content>
+    <ion-item>
+      <ion-button
+        @click="
+          this.$router.push({
+            name: 'Ticket',
+            params: { id: ticket.id },
+          })
+        "
+        >Voir</ion-button
+      >
+      <ion-button
+        v-if="ticket.ticketStatusId === '1'"
+        color="secondary"
+        @click="deleteTicket(ticket.id)"
+        >Clore</ion-button
+      >
+    </ion-item>
+  </ion-card>
 </template>
 
 <script>
 import { defineComponent } from "vue";
 import {
-  IonRow,
   IonCard,
   IonCardHeader,
   IonCardTitle,
@@ -37,7 +52,9 @@ import {
   IonCardContent,
   IonItem,
   IonButton,
+  alertController,
 } from "@ionic/vue";
+import { reformatedDates, ticketStatusName } from "@/utils/index.js";
 
 export default defineComponent({
   name: "TicketCards",
@@ -45,7 +62,6 @@ export default defineComponent({
     items: Object,
   },
   components: {
-    IonRow,
     IonCard,
     IonCardHeader,
     IonCardTitle,
@@ -53,6 +69,34 @@ export default defineComponent({
     IonCardContent,
     IonItem,
     IonButton,
+  },
+  setup() {
+    return { reformatedDates, ticketStatusName };
+  },
+  methods: {
+    async deleteTicket(id) {
+      const alert = await alertController.create({
+        header: "Souhaitez vous recevoir votre code de réinitialisation ?",
+        message:
+          "Vous recevrez un <strong>code</strong> par email vous permettant de changer de mot de passe",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            cssClass: "danger",
+            id: "cancel-button",
+          },
+          {
+            text: "Demander",
+            id: "confirm-button",
+            handler: () => {
+              this.$store.dispatch("deleteTicket", id);
+            },
+          },
+        ],
+      });
+      return alert.present();
+    },
   },
 });
 </script>
