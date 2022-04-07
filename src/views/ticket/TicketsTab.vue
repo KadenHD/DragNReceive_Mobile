@@ -2,6 +2,13 @@
   <ion-page>
     <ion-content>
       <Wrapper title="Mes tickets" createTicket>
+        <ion-button @click="this.$router.push({})">Tous</ion-button>
+        <ion-button @click="this.$router.push({ query: { filter: 'open' } })"
+          >Ouverts</ion-button
+        >
+        <ion-button @click="this.$router.push({ query: { filter: 'close' } })"
+          >Clos</ion-button
+        >
         <TicketsCards :items="userTickets" />
       </Wrapper>
     </ion-content>
@@ -11,11 +18,11 @@
 <script>
 import Wrapper from "@/components/Wrapper.vue";
 import TicketsCards from "@/components/ticket/TicketsCards.vue";
-import { IonPage, IonContent } from "@ionic/vue";
+import { IonPage, IonContent, IonButton } from "@ionic/vue";
 import { defineComponent } from "vue";
 
 import { mapGetters } from "vuex";
-// import { reformatedDates } from "@/utils/index.js";
+import _ from "lodash";
 
 export default defineComponent({
   name: "TicketsTab",
@@ -24,6 +31,7 @@ export default defineComponent({
     TicketsCards,
     IonPage,
     IonContent,
+    IonButton,
   },
   setup() {},
   created() {
@@ -32,10 +40,20 @@ export default defineComponent({
   computed: {
     ...mapGetters(["tickets"]),
     userTickets: function () {
-      if (!this.tickets) {
+      let tickets = this.tickets;
+      if (!tickets) {
         return null;
       } else {
-        return this.tickets;
+        if (this.$route.query.filter === "open") {
+          tickets = tickets.filter(function (i) {
+            if (i.ticketStatusId === "1") return i;
+          });
+        } else if (this.$route.query.filter === "close") {
+          tickets = tickets.filter(function (i) {
+            if (i.ticketStatusId === "2") return i;
+          });
+        }
+        return _.orderBy(tickets, ["updatedAt"], ["desc"]);
       }
     },
   },
