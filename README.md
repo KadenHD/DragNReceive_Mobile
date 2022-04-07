@@ -83,10 +83,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 > JSON
 
 # To-do
-- Nettoyer les inputs de tout les forms
-- https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
 
-- RESET => rendre accessible uniquement push from  /reset et qu'il n'y ai pas d'historique dessus.
+- https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
  
 # Sources
 
