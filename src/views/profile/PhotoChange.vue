@@ -62,6 +62,12 @@ export default defineComponent({
     });
     return { data, photoIsValid };
   },
+  watch: {
+    $route() {
+      this.data.file = null;
+      this.data.url = "";
+    },
+  },
   methods: {
     onFileChange(fileChangeEvent) {
       this.data.file = fileChangeEvent.target.files[0];
