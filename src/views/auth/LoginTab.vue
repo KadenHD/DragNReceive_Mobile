@@ -51,6 +51,12 @@ export default defineComponent({
       passwordIsValid,
     };
   },
+  watch: {
+    $route() {
+      this.data.email = "";
+      this.data.password = "";
+    },
+  },
   methods: {
     submitLoginForm() {
       const formIsValid =
