@@ -37,6 +37,17 @@ export default {
                 .catch((error) => {
                     renderAlert(error.response.data.error);
                 });
+        },
+        deleteAccount(context) {
+            axios
+                .delete("users/" + store.getters.currentUser.id)
+                .then((response) => {
+                    renderAlert(response.data.success);
+                    context.dispatch("logout");
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
         }
     },
     mutations: {}
