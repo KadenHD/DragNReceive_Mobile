@@ -84,6 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
+- Page de ticket
 - https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
  
 # Sources
