@@ -93,6 +93,15 @@ export default defineComponent({
       confirmPasswordIsValid,
     };
   },
+  watch: {
+    $route() {
+      this.data.lastname = "";
+      this.data.firstname = "";
+      this.data.email = "";
+      this.data.password = "";
+      this.data.confirmPassword = "";
+    },
+  },
   methods: {
     submitRegisterForm() {
       const formIsValid =
