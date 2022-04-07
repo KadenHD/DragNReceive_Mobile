@@ -1,6 +1,7 @@
 import { isLogged } from '@/utils/beforeEnter.js';
 
 import profileRouter from "./profile.js";
+import ticketRouter from './ticket.js';
 
 export default [
     {
@@ -24,11 +25,7 @@ export default [
                 name: 'Cart',
                 component: () => import('@/views/CartTab.vue'),
             },
-            {
-                path: 'Tickets',
-                name: 'Tickets',
-                component: () => import('@/views/TicketsTab.vue'),
-            },
+            ...ticketRouter,
         ]
     },
 ];
