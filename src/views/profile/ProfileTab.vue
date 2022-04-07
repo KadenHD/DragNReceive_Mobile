@@ -4,23 +4,21 @@
       <Wrapper title="Profil" parameters>
         <ion-avatar>
           <img
-            :src="
-              currentUser.path ? url + currentUser.path : 'assets/img/user.svg'
-            "
+            :src="userInfos.path ? url + userInfos.path : 'assets/img/user.svg'"
           />
         </ion-avatar>
-        <UiInput label="Nom" disabled :value="currentUser.lastname" />
-        <UiInput label="Prénom" disabled :value="currentUser.firstname" />
-        <UiInput label="Email" disabled :value="currentUser.email" />
+        <UiInput label="Nom" disabled :value="userInfos.lastname" />
+        <UiInput label="Prénom" disabled :value="userInfos.firstname" />
+        <UiInput label="Email" disabled :value="userInfos.email" />
         <UiInput
           label="Date de création du compte"
           disabled
-          :value="reformatedDates(currentUser.createdAt)"
+          :value="reformatedDates(userInfos.createdAt)"
         />
         <UiInput
           label="Dernière modification du profil"
           disabled
-          :value="reformatedDates(currentUser.updatedAt)"
+          :value="reformatedDates(userInfos.updatedAt)"
         />
       </Wrapper>
     </ion-content>
@@ -54,6 +52,13 @@ export default defineComponent({
   },
   computed: {
     ...mapGetters(["currentUser"]),
+    userInfos: function () {
+      if (!this.currentUser) {
+        return null;
+      } else {
+        return this.currentUser;
+      }
+    },
   },
 });
 </script>
