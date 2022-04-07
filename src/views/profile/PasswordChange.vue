@@ -67,6 +67,12 @@ export default defineComponent({
     });
     return { data, passwordIsValid, newPasswordIsValid };
   },
+  watch: {
+    $route() {
+      this.data.newPassword = "";
+      this.data.actualPassword = "";
+    },
+  },
   methods: {
     submitPasswordChangeForm() {
       const formIsValid =
