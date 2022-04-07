@@ -50,10 +50,9 @@ export default {
                 });
         },
         logout(context) {
-            context.commit('currentUser', null);
+            context.dispatch('currentUser', null);
             localStorage.removeItem("token");
-            context.commit('clearAll');
-            router.go({ name: "homeRedirections" });
+            router.push({ name: "homeRedirections" });
         },
         reset(context, data) {
             axios
@@ -77,17 +76,6 @@ export default {
                     renderAlert(error.response.data.error);
                     router.push({ name: "Reset" });
                 });
-        },
-        clearAll(context) {
-            context.dispatch("user", null);
-            context.dispatch("shop", null);
-            context.dispatch("shops", null);
-            context.dispatch("product", null);
-            context.dispatch("products", null);
-            context.dispatch("ticket", null);
-            context.dispatch("tickets", null);
-            context.dispatch("order", null);
-            context.dispatch("orders", null);
         },
     },
     mutations: {
