@@ -76,7 +76,7 @@ export default defineComponent({
             text: "Supprimer",
             id: "confirm-button",
             handler: () => {
-              // delete account
+              this.$store.dispatch("deleteAccount");
             },
           },
         ],
