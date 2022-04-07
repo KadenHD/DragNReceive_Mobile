@@ -126,6 +126,17 @@ export default defineComponent({
     });
     return { data, passwordIsValid, confirmPasswordIsValid };
   },
+  watch: {
+    $route() {
+      this.data.code = "";
+      this.data.one = "";
+      this.data.two = "";
+      this.data.three = "";
+      this.data.four = "";
+      this.data.password = "";
+      this.data.confirmPassword = "";
+    },
+  },
   methods: {
     submitResetCodeForm() {
       const formIsValid =
