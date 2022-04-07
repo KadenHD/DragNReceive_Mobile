@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <Wrapper title="Profil" parameters>
+      <Wrapper title="Profil" profileParameters>
         <ion-avatar>
           <img
             :src="userInfos.path ? url + userInfos.path : 'assets/img/user.svg'"
