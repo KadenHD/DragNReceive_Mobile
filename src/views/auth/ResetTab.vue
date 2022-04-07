@@ -39,6 +39,11 @@ export default defineComponent({
     });
     return { data, emailIsValid };
   },
+  watch: {
+    $route() {
+      this.data.email = "";
+    },
+  },
   methods: {
     submitResetForm() {
       const formIsValid = emailIsValid(this.data.email).valid;
