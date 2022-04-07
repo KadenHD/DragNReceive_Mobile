@@ -6,7 +6,9 @@
         v-else-if="
           this.$route.name != 'ProfileParameters' &&
           this.$route.name != 'ProfilePasswordChange' &&
-          this.$route.name != 'ProfilePhotoChange'
+          this.$route.name != 'ProfilePhotoChange' &&
+          this.$route.name != 'Ticket' &&
+          this.$route.name != 'TicketCreate'
         "
       />
       <ion-router-outlet></ion-router-outlet>
@@ -14,7 +16,9 @@
         v-if="
           this.$route.name != 'ProfileParameters' &&
           this.$route.name != 'ProfilePasswordChange' &&
-          this.$route.name != 'ProfilePhotoChange'
+          this.$route.name != 'ProfilePhotoChange' &&
+          this.$route.name != 'Ticket' &&
+          this.$route.name != 'TicketCreate'
         "
       />
     </ion-tabs>
