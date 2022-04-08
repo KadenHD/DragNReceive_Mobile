@@ -15,7 +15,7 @@
           :valid="titleIsValid(data.title).valid"
           :error="titleIsValid(data.title).error"
         />
-        <UiInput
+        <UiTextarea
           label="Contenu"
           type="text"
           placeholder="Saisissez le contenu de votre ticket"
@@ -32,6 +32,7 @@
 <script>
 import Wrapper from "@/components/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
+import UiTextarea from "@/components/ui/Textarea.vue";
 import UiButton from "@/components/ui/Button.vue";
 import {
   IonPage,
@@ -49,6 +50,7 @@ export default defineComponent({
   components: {
     Wrapper,
     UiInput,
+    UiTextarea,
     UiButton,
     IonPage,
     IonButtons,
