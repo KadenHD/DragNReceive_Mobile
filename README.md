@@ -84,8 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Ticket : mettre un text-area pour le create et le Ticket
-- Afficher les messages etc dans Ticket
+- Page Ticket => faire la messagerie des tickets
 - https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
  
 # Sources
