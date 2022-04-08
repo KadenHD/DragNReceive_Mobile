@@ -6,8 +6,20 @@
       </ion-toolbar>
     </ion-header>
     <Wrapper :title="`Ticket n°${userTicket.id}`">
+      <ion-card scroll-y="true" class="groupList">
+        <ion-card-header> Messages </ion-card-header>
+        <ion-card-content>
+          <ion-list v-for="message in ticket.messages" v-bind:key="message.id">
+            <ion-item>
+              <ion-label>
+                <h2>{{ message.content }}</h2>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
       <form @submit.prevent="submitMessageForm">
-        <UiInput
+        <UiTextarea
           label="Contenu"
           type="text"
           placeholder="Saisissez le contenu de votre message"
@@ -23,12 +35,18 @@
 
 <script>
 import Wrapper from "@/components/Wrapper.vue";
-import UiInput from "@/components/ui/Input.vue";
+import UiTextarea from "@/components/ui/Textarea.vue";
 import UiButton from "@/components/ui/Button.vue";
 import {
   IonPage,
   IonButtons,
   IonHeader,
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonList,
+  IonItem,
+  IonLabel,
   IonToolbar,
   IonBackButton,
 } from "@ionic/vue";
@@ -42,17 +60,24 @@ export default defineComponent({
   name: "TicketCreate",
   components: {
     Wrapper,
-    UiInput,
+    UiTextarea,
     UiButton,
     IonPage,
     IonButtons,
     IonHeader,
+    IonCard,
+    IonCardHeader,
+    IonCardContent,
+    IonList,
+    IonItem,
+    IonLabel,
     IonToolbar,
     IonBackButton,
   },
   setup() {
     const data = reactive({
       content: "",
+      ticketId: "",
     });
     const url = process.env.VUE_APP_URL;
     return { data, url, contentIsValid };
@@ -60,6 +85,7 @@ export default defineComponent({
   watch: {
     $route() {
       this.data.content = "";
+      this.data.ticketId = "";
     },
   },
   created() {
@@ -79,9 +105,18 @@ export default defineComponent({
     submitMessageForm() {
       const formIsValid = contentIsValid(this.data.content).valid;
       if (formIsValid) {
+        this.data.ticketId = this.$route.params.id;
         this.$store.dispatch("createMessage", this.data);
+        this.data.content = "";
       }
     },
   },
 });
 </script>
+
+<style lang="scss">
+.groupList {
+  height: 220px;
+  overflow: scroll;
+}
+</style>
