@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <Wrapper title="Profil" profileParameters>
+      <Wrapper v-if="userInfos" title="Profil" profileParameters>
         <ion-avatar>
           <img
             :src="userInfos.path ? url + userInfos.path : 'assets/img/user.svg'"
@@ -63,7 +63,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 ion-avatar {
   width: 150px !important;
   height: 150px !important;
