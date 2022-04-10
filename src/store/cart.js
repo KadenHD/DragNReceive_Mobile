@@ -1,6 +1,6 @@
 export default {
     state: {
-        cart: {},
+        cart: null,
     },
     getters: {
         cart: (state) => { return state.cart; },
