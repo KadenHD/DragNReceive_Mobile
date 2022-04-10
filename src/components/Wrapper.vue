@@ -63,23 +63,23 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .Wrapper {
   margin: 40px 20px 80px 20px;
-  ion-row {
-    display: flex;
-    justify-content: space-between;
+}
+ion-row {
+  display: flex;
+  justify-content: space-between;
+}
+.rotate {
+  animation: rotation 4s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
   }
-  .rotate {
-    animation: rotation 4s infinite linear;
-  }
-  @keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
+  to {
+    transform: rotate(359deg);
   }
 }
 </style>
