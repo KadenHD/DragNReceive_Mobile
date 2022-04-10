@@ -85,7 +85,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 ion-tab-bar {
   bottom: 20px;
   position: relative;
