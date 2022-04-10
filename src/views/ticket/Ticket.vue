@@ -9,24 +9,31 @@
       <h2>{{ ticket.content }}</h2>
       <ion-card v-if="ticketMessages" scroll-y="true" class="groupList">
         <ion-list v-for="message in ticketMessages" v-bind:key="message.id">
-          <div>
-            <ion-avatar>
-              <img
-                :src="
-                  message.user.path
-                    ? url + message.user.path
-                    : 'assets/img/user.svg'
-                "
-              />
-            </ion-avatar>
-            <h2>
-              {{ message.user.firstname }} {{ message.user.lastname }} <br />
-              {{ message.content }}
-            </h2>
-            <ion-card-subtitle>{{
-              reformatedDates(message.createdAt)
-            }}</ion-card-subtitle>
-          </div>
+          <ion-item-divider>
+            <ion-row>
+              <ion-col>
+                <ion-avatar>
+                  <img
+                    :src="
+                      message.user.path
+                        ? url + message.user.path
+                        : 'assets/img/user.svg'
+                    "
+                  />
+                </ion-avatar>
+              </ion-col>
+              <ion-col>
+                <h2>
+                  {{ message.user.firstname }} {{ message.user.lastname }}
+                  <br />
+                  {{ message.content }}
+                </h2>
+                <ion-card-subtitle>{{
+                  reformatedDates(message.createdAt)
+                }}</ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-item-divider>
         </ion-list>
       </ion-card>
       <form
@@ -55,6 +62,9 @@ import {
   IonPage,
   IonButtons,
   IonHeader,
+  IonRow,
+  IonCol,
+  IonItemDivider,
   IonCard,
   IonAvatar,
   IonCardSubtitle,
@@ -78,6 +88,9 @@ export default defineComponent({
     IonPage,
     IonButtons,
     IonHeader,
+    IonRow,
+    IonCol,
+    IonItemDivider,
     IonCard,
     IonAvatar,
     IonCardSubtitle,
@@ -134,12 +147,15 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .groupList {
-  height: 220px;
+  height: 250px;
   overflow: scroll;
 }
+ion-row {
+  padding-top: 10px;
+}
 ion-avatar {
-  width: 75px !important;
-  height: 75px !important;
+  width: 60px !important;
+  height: 60px !important;
 }
 h2 {
   color: var(--ion-text-color);
