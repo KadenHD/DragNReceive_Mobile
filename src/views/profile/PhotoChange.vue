@@ -105,7 +105,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 ion-avatar {
   width: 150px !important;
   height: 150px !important;
