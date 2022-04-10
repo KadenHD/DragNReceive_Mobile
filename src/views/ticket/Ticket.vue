@@ -6,19 +6,33 @@
       </ion-toolbar>
     </ion-header>
     <Wrapper :title="`Ticket n°${userTicket.id}`">
-      <ion-card scroll-y="true" class="groupList">
-        <ion-card-header> Messages </ion-card-header>
-        <ion-card-content>
-          <ion-list v-for="message in ticket.messages" v-bind:key="message.id">
-            <ion-item>
-              <ion-label>
-                <h2>{{ message.content }}</h2>
-              </ion-label>
-            </ion-item>
-          </ion-list>
-        </ion-card-content>
+      <h2>{{ ticket.content }}</h2>
+      <ion-card v-if="ticketMessages" scroll-y="true" class="groupList">
+        <ion-list v-for="message in ticketMessages" v-bind:key="message.id">
+          <div>
+            <ion-avatar>
+              <img
+                :src="
+                  message.user.path
+                    ? url + message.user.path
+                    : 'assets/img/user.svg'
+                "
+              />
+            </ion-avatar>
+            <h2>
+              {{ message.user.firstname }} {{ message.user.lastname }} <br />
+              {{ message.content }}
+            </h2>
+            <ion-card-subtitle>{{
+              reformatedDates(message.createdAt)
+            }}</ion-card-subtitle>
+          </div>
+        </ion-list>
       </ion-card>
-      <form @submit.prevent="submitMessageForm">
+      <form
+        v-if="userTicket.ticketStatusId != '2'"
+        @submit.prevent="submitMessageForm"
+      >
         <UiTextarea
           label="Contenu"
           type="text"
@@ -42,22 +56,21 @@ import {
   IonButtons,
   IonHeader,
   IonCard,
-  IonCardHeader,
-  IonCardContent,
+  IonAvatar,
+  IonCardSubtitle,
   IonList,
-  IonItem,
-  IonLabel,
   IonToolbar,
   IonBackButton,
 } from "@ionic/vue";
 import { defineComponent, reactive } from "vue";
 
 import { mapGetters } from "vuex";
-// import { reformatedDates } from "@/utils/index.js";
+import _ from "lodash";
+import { reformatedDates } from "@/utils/index.js";
 import { contentIsValid } from "@/utils/validInputs.js";
 
 export default defineComponent({
-  name: "TicketCreate",
+  name: "Ticket",
   components: {
     Wrapper,
     UiTextarea,
@@ -66,11 +79,9 @@ export default defineComponent({
     IonButtons,
     IonHeader,
     IonCard,
-    IonCardHeader,
-    IonCardContent,
+    IonAvatar,
+    IonCardSubtitle,
     IonList,
-    IonItem,
-    IonLabel,
     IonToolbar,
     IonBackButton,
   },
@@ -80,7 +91,7 @@ export default defineComponent({
       ticketId: "",
     });
     const url = process.env.VUE_APP_URL;
-    return { data, url, contentIsValid };
+    return { data, url, reformatedDates, contentIsValid };
   },
   watch: {
     $route() {
@@ -100,6 +111,13 @@ export default defineComponent({
         return this.ticket;
       }
     },
+    ticketMessages: function () {
+      if (!this.ticket.messages) {
+        return null;
+      } else {
+        return _.orderBy(this.ticket.messages, ["updatedAt"], ["desc"]);
+      }
+    },
   },
   methods: {
     submitMessageForm() {
@@ -114,9 +132,16 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .groupList {
   height: 220px;
   overflow: scroll;
+}
+ion-avatar {
+  width: 75px !important;
+  height: 75px !important;
+}
+h2 {
+  color: var(--ion-text-color);
 }
 </style>
