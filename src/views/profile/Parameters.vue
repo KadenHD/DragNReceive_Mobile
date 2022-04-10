@@ -9,11 +9,11 @@
       <ion-list>
         <ion-item @click="this.$router.push({ name: 'ProfilePasswordChange' })">
           <ion-label>Changer mon mot de passe</ion-label>
-          <ion-icon size="medium" :icon="chevronForward" />
+          <ion-icon :icon="chevronForward" />
         </ion-item>
         <ion-item @click="this.$router.push({ name: 'ProfilePhotoChange' })">
           <ion-label>Changer ma photo de profil</ion-label>
-          <ion-icon size="medium" :icon="chevronForward" />
+          <ion-icon :icon="chevronForward" />
         </ion-item>
         <ion-item @click="deleteClick()">
           <ion-label color="danger">Supprimer mon compte</ion-label>
