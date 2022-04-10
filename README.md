@@ -84,8 +84,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Faire la page home, permettant de voir des produits, mettre au panier et de voir des boutiques
-- https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar du home)
+- Page home, mise en page des objets
+- Réalisation d'une search bar dynamique => https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar du home)
  
 # Sources
 
