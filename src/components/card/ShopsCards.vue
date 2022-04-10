@@ -24,3 +24,10 @@ export default defineComponent({
   methods: {},
 });
 </script>
+
+<style scoped lang="scss">
+ion-item {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+</style>
