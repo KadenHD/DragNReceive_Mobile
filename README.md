@@ -84,8 +84,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Page Ticket => faire la messagerie des tickets
-- https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar)
+- Faire la page home, permettant de voir des produits, mettre au panier et de voir des boutiques
+- https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar du home)
  
 # Sources
 
