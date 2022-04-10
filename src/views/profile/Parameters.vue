@@ -44,6 +44,7 @@ import { chevronForward } from "ionicons/icons";
 import { defineComponent } from "vue";
 
 export default defineComponent({
+  name: "ProfileParameters",
   components: {
     IonPage,
     IonButtons,
