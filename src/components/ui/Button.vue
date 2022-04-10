@@ -19,7 +19,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .ui__button {
   margin-top: 20px;
   font-weight: bold;
