@@ -17,13 +17,13 @@ export default [
             {
                 path: 'home',
                 name: 'Home',
-                component: () => import('@/views/HomeTab.vue'),
+                component: () => import('@/views/shop/HomeTab.vue'),
             },
             ...profileRouter,
             {
                 path: 'Cart',
                 name: 'Cart',
-                component: () => import('@/views/CartTab.vue'),
+                component: () => import('@/views/cart/CartTab.vue'),
             },
             ...ticketRouter,
         ]
