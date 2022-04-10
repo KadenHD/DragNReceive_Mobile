@@ -76,9 +76,9 @@ export default defineComponent({
   methods: {
     async deleteTicket(id) {
       const alert = await alertController.create({
-        header: "Souhaitez vous recevoir votre code de réinitialisation ?",
+        header: "Souhaitez vous vraiment clore ce ticket ?",
         message:
-          "Vous recevrez un <strong>code</strong> par email vous permettant de changer de mot de passe",
+          "Une fois clos, le ticket restera accessible, cependant vous ne pourrez plus y poster de message.",
         buttons: [
           {
             text: "Annuler",
@@ -101,7 +101,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .border {
   box-shadow: 0px 3px 6px 0px rgba(128, 128, 128, 0.367);
 }
