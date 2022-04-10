@@ -17,7 +17,7 @@
 
 <script>
 import Wrapper from "@/components/Wrapper.vue";
-import TicketsCards from "@/components/ticket/TicketsCards.vue";
+import TicketsCards from "@/components/card/TicketsCards.vue";
 import { IonPage, IonContent, IonButton } from "@ionic/vue";
 import { defineComponent } from "vue";
 
