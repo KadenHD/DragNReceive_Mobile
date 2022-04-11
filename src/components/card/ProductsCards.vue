@@ -1,9 +1,9 @@
 <template>
   <div v-for="product in items" v-bind:key="product.id">
+    <ion-item-divider v-if="product.id !== items[0].id" />
     <ion-item>
       {{ product }}
     </ion-item>
-    <ion-item-divider />
   </div>
 </template>
 
@@ -18,7 +18,6 @@ export default defineComponent({
   },
   components: {
     IonItem,
-
     IonItemDivider,
   },
   setup() {},
