@@ -14,5 +14,8 @@ export default defineComponent({
     IonApp,
     IonRouterOutlet,
   },
+  created() {
+    this.$store.dispatch("setCurrentUser");
+  },
 });
 </script>
