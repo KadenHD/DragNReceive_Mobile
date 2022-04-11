@@ -125,7 +125,7 @@ ion-tab-bar {
   width: 92%;
   border: 0;
   margin: 0 auto;
-  background-color: transparent;
+  background-color: var(--ion-background-color);
 }
 ion-tab-button {
   &::before {
