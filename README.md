@@ -84,7 +84,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Page home, mise en page des objets
+- Page Boutiques, contenant les produits de la boutique
+- Page Produit, permettant d'acheter et les stocks (page avec back butto (comme les options))
 - Réalisation d'une search bar dynamique => https://codepen.io/AndrewThian/pen/QdeOVa (permet de dynamiser la searchbar du home)
  
 # Sources
