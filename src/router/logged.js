@@ -1,6 +1,7 @@
 import { isLogged } from '@/utils/beforeEnter.js';
 
 import profileRouter from "./profile.js";
+import shopRouter from "./shop.js";
 import ticketRouter from './ticket.js';
 
 export default [
@@ -14,14 +15,10 @@ export default [
                 name: 'Auth',
                 redirect: '/client/home'
             },
-            {
-                path: 'home',
-                name: 'Home',
-                component: () => import('@/views/shop/HomeTab.vue'),
-            },
             ...profileRouter,
+            ...shopRouter,
             {
-                path: 'Cart',
+                path: 'cart',
                 name: 'Cart',
                 component: () => import('@/views/cart/CartTab.vue'),
             },
