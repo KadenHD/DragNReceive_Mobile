@@ -1,14 +1,16 @@
 <template>
   <ion-page>
     <ion-tabs>
-      <SearchBarHeader v-if="this.$route.name === 'Home'" />
       <DefaultHeader
-        v-else-if="
+        v-if="
+          this.$route.name != 'Home' &&
           this.$route.name != 'ProfileParameters' &&
           this.$route.name != 'ProfilePasswordChange' &&
           this.$route.name != 'ProfilePhotoChange' &&
           this.$route.name != 'Ticket' &&
-          this.$route.name != 'TicketCreate'
+          this.$route.name != 'TicketCreate' &&
+          this.$route.name != 'Shop' &&
+          this.$route.name != 'Product'
         "
       />
       <ion-router-outlet></ion-router-outlet>
@@ -18,7 +20,9 @@
           this.$route.name != 'ProfilePasswordChange' &&
           this.$route.name != 'ProfilePhotoChange' &&
           this.$route.name != 'Ticket' &&
-          this.$route.name != 'TicketCreate'
+          this.$route.name != 'TicketCreate' &&
+          this.$route.name != 'Shop' &&
+          this.$route.name != 'Product'
         "
       />
     </ion-tabs>
@@ -26,7 +30,6 @@
 </template>
 
 <script>
-import SearchBarHeader from "@/components/SearchBarHeader.vue";
 import DefaultHeader from "@/components/DefaultHeader.vue";
 import LoggedFooter from "@/components/LoggedFooter.vue";
 import { IonPage, IonTabs, IonRouterOutlet } from "@ionic/vue";
@@ -35,7 +38,6 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "MainTabs",
   components: {
-    SearchBarHeader,
     DefaultHeader,
     LoggedFooter,
     IonPage,
