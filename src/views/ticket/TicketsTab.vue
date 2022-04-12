@@ -33,7 +33,6 @@ export default defineComponent({
     IonContent,
     IonButton,
   },
-  setup() {},
   created() {
     this.$store.dispatch("setTickets");
   },
