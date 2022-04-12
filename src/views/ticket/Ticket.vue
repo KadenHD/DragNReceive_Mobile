@@ -13,7 +13,7 @@
             <ion-row>
               <ion-col>
                 <ion-avatar>
-                  <img
+                  <ion-img
                     :src="
                       message.user.path
                         ? url + message.user.path
@@ -67,6 +67,7 @@ import {
   IonItemDivider,
   IonCard,
   IonAvatar,
+  IonImg,
   IonCardSubtitle,
   IonList,
   IonToolbar,
@@ -93,6 +94,7 @@ export default defineComponent({
     IonItemDivider,
     IonCard,
     IonAvatar,
+    IonImg,
     IonCardSubtitle,
     IonList,
     IonToolbar,
