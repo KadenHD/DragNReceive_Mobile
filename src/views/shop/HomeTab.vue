@@ -1,5 +1,6 @@
 <template>
   <ion-page>
+    <SearchBarHeader v-model:value="searchValue" />
     <ion-content
       class="bindingScrollContent"
       :scroll-events="true"
@@ -27,16 +28,18 @@
 </template>
 
 <script>
+import SearchBarHeader from "@/components/SearchBarHeader.vue";
 import ShopsCards from "@/components/card/ShopsCards.vue";
 import ProductsCards from "@/components/card/ProductsCards.vue";
 import { IonPage, IonList, IonContent, IonButton, IonIcon } from "@ionic/vue";
 import { chevronUpOutline } from "ionicons/icons";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "HomeTab",
   components: {
+    SearchBarHeader,
     ShopsCards,
     ProductsCards,
     IonPage,
@@ -46,7 +49,8 @@ export default defineComponent({
     IonIcon,
   },
   setup() {
-    return { chevronUpOutline };
+    const searchValue = ref("");
+    return { searchValue, chevronUpOutline };
   },
   data() {
     return { backToTop: false };
@@ -56,14 +60,20 @@ export default defineComponent({
     this.$store.dispatch("setShops");
   },
   computed: {
-    ...mapGetters(["products"]),
-    ...mapGetters(["shops"]),
+    ...mapGetters(["products", "shops"]),
     myProducts: function () {
       let products = this.products;
       if (!products) {
         return null;
       } else {
         if (this.$route.query.filter === undefined) {
+          if (this.searchValue) {
+            return products.filter((product) => {
+              return product.name
+                .toLowerCase()
+                .includes(this.searchValue.toLowerCase());
+            });
+          }
           return products;
         }
         return null;
@@ -75,6 +85,13 @@ export default defineComponent({
         return null;
       } else {
         if (this.$route.query.filter === "shops") {
+          if (this.searchValue) {
+            return shops.filter((shop) => {
+              return shop.name
+                .toLowerCase()
+                .includes(this.searchValue.toLowerCase());
+            });
+          }
           return shops;
         } else {
           return null;
