@@ -11,6 +11,5 @@ export default defineComponent({
   components: {
     IonPage,
   },
-  setup() {},
 });
 </script>
