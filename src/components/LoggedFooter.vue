@@ -42,7 +42,7 @@
       <ion-label></ion-label>
     </ion-tab-button>
 
-    <ion-img src="assets/img/Jimdo/DragNReceive/hexaName/logo.svg"></ion-img>
+    <ion-img src="assets/img/Jimdo/DragNReceive/hexaName/logo.svg" />
 
     <ion-tab-button
       v-if="this.$route.name === 'Cart'"
