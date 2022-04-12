@@ -74,7 +74,6 @@ export default defineComponent({
     const url = process.env.VUE_APP_URL;
     return { url };
   },
-  methods: {},
 });
 </script>
 
