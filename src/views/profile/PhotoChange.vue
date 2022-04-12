@@ -8,7 +8,7 @@
     <Wrapper title="Changement de photo">
       <form @submit.prevent="submitPhotoChangeForm">
         <ion-avatar v-if="data.file">
-          <img :src="data.url" />
+          <ion-img :src="data.url" />
         </ion-avatar>
         <ion-input
           type="file"
@@ -32,6 +32,7 @@ import {
   IonButtons,
   IonHeader,
   IonAvatar,
+  IonImg,
   IonInput,
   IonText,
   IonToolbar,
@@ -50,6 +51,7 @@ export default defineComponent({
     IonButtons,
     IonHeader,
     IonAvatar,
+    IonImg,
     IonInput,
     IonText,
     IonToolbar,
