@@ -6,8 +6,12 @@
       @ionScroll="getScrollPos($event.detail.scrollTop)"
     >
       <div v-if="myShops || myProducts">
-        <ion-button @click="this.$router.push({})">Produits</ion-button>
-        <ion-button @click="this.$router.push({ query: { filter: 'shops' } })"
+        <ion-button color="secondary" @click="this.$router.push({})"
+          >Produits</ion-button
+        >
+        <ion-button
+          color="secondary"
+          @click="this.$router.push({ query: { filter: 'shops' } })"
           >Boutiques</ion-button
         >
         <ion-list>
