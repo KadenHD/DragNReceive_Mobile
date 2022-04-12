@@ -3,7 +3,7 @@
     <ion-content>
       <Wrapper v-if="userInfos" title="Profil" profileParameters>
         <ion-avatar>
-          <img
+          <ion-img
             :src="userInfos.path ? url + userInfos.path : 'assets/img/user.svg'"
           />
         </ion-avatar>
@@ -28,7 +28,7 @@
 <script>
 import Wrapper from "@/components/Wrapper.vue";
 import UiInput from "@/components/ui/Input.vue";
-import { IonPage, IonContent, IonAvatar } from "@ionic/vue";
+import { IonPage, IonContent, IonAvatar, IonImg } from "@ionic/vue";
 import { defineComponent } from "vue";
 
 import { mapGetters } from "vuex";
@@ -42,6 +42,7 @@ export default defineComponent({
     IonPage,
     IonContent,
     IonAvatar,
+    IonImg,
   },
   setup() {
     const url = process.env.VUE_APP_URL;
