@@ -35,6 +35,7 @@ import { IonPage, IonList, IonContent, IonButton, IonIcon } from "@ionic/vue";
 import { chevronUpOutline } from "ionicons/icons";
 import { defineComponent, ref } from "vue";
 import { mapGetters } from "vuex";
+import { fetchSearchElement } from "@/utils/index.js";
 
 export default defineComponent({
   name: "HomeTab",
@@ -62,37 +63,21 @@ export default defineComponent({
   computed: {
     ...mapGetters(["products", "shops"]),
     myProducts: function () {
-      let products = this.products;
-      if (!products) {
+      if (!this.products) {
         return null;
       } else {
         if (this.$route.query.filter === undefined) {
-          if (this.searchValue) {
-            return products.filter((product) => {
-              return product.name
-                .toLowerCase()
-                .includes(this.searchValue.toLowerCase());
-            });
-          }
-          return products;
+          return fetchSearchElement(this.searchValue, this.products);
         }
         return null;
       }
     },
     myShops: function () {
-      let shops = this.shops;
-      if (!shops) {
+      if (!this.shops) {
         return null;
       } else {
         if (this.$route.query.filter === "shops") {
-          if (this.searchValue) {
-            return shops.filter((shop) => {
-              return shop.name
-                .toLowerCase()
-                .includes(this.searchValue.toLowerCase());
-            });
-          }
-          return shops;
+          return fetchSearchElement(this.searchValue, this.shops);
         } else {
           return null;
         }
