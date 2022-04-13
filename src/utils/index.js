@@ -24,3 +24,14 @@ export const orderStatusName = (key) => {
         return "Annulée";
     }
 }
+
+export const fetchSearchElement = (search, items) => {
+    if (search) {
+        return items.filter((item) => {
+            return item.name
+                .toLowerCase()
+                .includes(search.toLowerCase());
+        });
+    }
+    return items;
+}
