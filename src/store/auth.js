@@ -13,12 +13,12 @@ export default {
     actions: {
         currentUser(context, currentUser) { context.commit('currentUser', currentUser); },
         setCurrentUser(context) {
-            if (localStorage.getItem('token')) {
+            if (localStorage.getItem('dragnreceive-mobile-token')) {
                 axios.get("currentUser")
                     .then((response) => {
                         context.dispatch("currentUser", response.data.currentUser);
                         if (!response.data.currentUser) {
-                            localStorage.removeItem("token");
+                            localStorage.removeItem("dragnreceive-mobile-token");
                         }
                     })
                     .catch(() => {
@@ -30,7 +30,7 @@ export default {
             axios
                 .post("loginClient", data)
                 .then((response) => {
-                    localStorage.setItem("token", response.data.token);
+                    localStorage.setItem("dragnreceive-mobile-token", response.data.token);
                     context.dispatch("currentUser", response.data.user);
                     router.go({ name: 'homeRedirections' });
                 })
@@ -51,7 +51,7 @@ export default {
         },
         logout(context) {
             context.dispatch('currentUser', null);
-            localStorage.removeItem("token");
+            localStorage.removeItem("dragnreceive-mobile-token");
             router.push({ name: "homeRedirections" });
         },
         reset(context, data) {
