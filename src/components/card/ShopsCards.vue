@@ -1,42 +1,38 @@
 <template>
   <div v-for="shop in items" v-bind:key="shop.id">
     <ion-item-divider v-if="shop.id !== items[0].id" />
-    <ion-item>
-      <ion-card>
-        <ion-img
-          :src="shop.path ? url + shop.path : 'assets/img/default.svg'"
-        />
-        <ion-card-header>
-          <ion-card-subtitle
-            ><a :href="`mailto:${shop.email}`">{{
-              shop.email
-            }}</a></ion-card-subtitle
-          >
-          <ion-card-subtitle
-            ><a :href="`tel:${shop.phone}`">{{
-              shop.phone
-            }}</a></ion-card-subtitle
-          >
-          <ion-card-title>{{ shop.name }}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Adresse de la boutique partenaire :
-          {{ shop.city }}, {{ shop.street }},
-          {{ shop.postal }}
-        </ion-card-content>
-        <UiButton
-          class="button"
-          color="secondary"
-          @click="
-            this.$router.push({
-              name: 'Shop',
-              params: { id: shop.id },
-            })
-          "
-          >Voir</UiButton
+    <ion-card>
+      <ion-img :src="shop.path ? url + shop.path : 'assets/img/default.svg'" />
+      <ion-card-header>
+        <ion-card-subtitle
+          ><a :href="`mailto:${shop.email}`">{{
+            shop.email
+          }}</a></ion-card-subtitle
         >
-      </ion-card>
-    </ion-item>
+        <ion-card-subtitle
+          ><a :href="`tel:${shop.phone}`">{{
+            shop.phone
+          }}</a></ion-card-subtitle
+        >
+        <ion-card-title>{{ shop.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Adresse de la boutique partenaire :
+        {{ shop.city }}, {{ shop.street }},
+        {{ shop.postal }}
+      </ion-card-content>
+      <UiButton
+        class="button"
+        color="secondary"
+        @click="
+          this.$router.push({
+            name: 'Shop',
+            params: { id: shop.id },
+          })
+        "
+        >Voir</UiButton
+      >
+    </ion-card>
   </div>
 </template>
 
@@ -44,7 +40,6 @@
 import UiButton from "@/components/ui/Button.vue";
 import {
   IonItemDivider,
-  IonItem,
   IonCard,
   IonImg,
   IonCardHeader,
@@ -62,7 +57,6 @@ export default defineComponent({
   components: {
     UiButton,
     IonItemDivider,
-    IonItem,
     IonCard,
     IonImg,
     IonCardHeader,
@@ -86,8 +80,8 @@ ion-card {
   margin: 0 auto;
 }
 ion-img {
-  max-height: 150px;
-  max-width: 150px;
+  height: 250px;
+  width: 250px;
   margin: 0 auto;
 }
 .button {
