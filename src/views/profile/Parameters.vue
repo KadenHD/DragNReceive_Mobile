@@ -70,7 +70,6 @@ export default defineComponent({
           {
             text: "Annuler",
             role: "cancel",
-            cssClass: "danger",
             id: "cancel-button",
           },
           {
@@ -93,7 +92,6 @@ export default defineComponent({
           {
             text: "Annuler",
             role: "cancel",
-            cssClass: "danger",
             id: "cancel-button",
           },
           {
