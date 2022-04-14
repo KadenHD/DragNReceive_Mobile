@@ -85,7 +85,7 @@ export const contentIsValid = (v) => {
 export const stockIsValid = (v, w) => {
     const required = v > "0";
     const compare = v <= w;
-    if (!required) return { valid: false, error: "Le nouveau mot de passe est requis" };
-    if (!compare) return { valid: false, error: "Les mot de passe doivent être différents" };
+    if (!required) return { valid: false, error: "Veuillez ajouter une quantitée valide de produit" };
+    if (!compare) return { valid: false, error: "La quantité de produit ne doit pas excéder le stock" };
     return { valid: true };
 }
