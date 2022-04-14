@@ -5,8 +5,6 @@ import store from '@/store';
 import renderAlert from '@/utils/renderAlert.js';
 
 export default {
-    state: {},
-    getters: {},
     actions: {
         profileChangePhoto(context, file) {
             const formData = new FormData();
@@ -50,5 +48,4 @@ export default {
                 });
         }
     },
-    mutations: {}
 }
