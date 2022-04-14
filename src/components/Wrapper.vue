@@ -19,6 +19,12 @@
                 size="large"
                 :icon="addOutline"
               ></ion-icon>
+              <ion-icon
+                v-if="deleteCart"
+                @click="clearCart()"
+                size="large"
+                :icon="trashOutline"
+              ></ion-icon>
             </ion-row>
           </ion-card-header>
           <slot></slot>
@@ -39,13 +45,15 @@ import {
   IonCardHeader,
   IonCardTitle,
 } from "@ionic/vue";
-import { cogOutline, addOutline } from "ionicons/icons";
+import { cogOutline, addOutline, trashOutline } from "ionicons/icons";
+import { alertController } from "@ionic/vue";
 
 export default defineComponent({
   name: "Wrapper",
   props: {
     profileParameters: Boolean,
     createTicket: Boolean,
+    deleteCart: Boolean,
     title: String,
   },
   components: {
@@ -58,7 +66,31 @@ export default defineComponent({
     IonCardTitle,
   },
   setup() {
-    return { cogOutline, addOutline };
+    return { cogOutline, addOutline, trashOutline };
+  },
+  methods: {
+    async clearCart() {
+      const alert = await alertController.create({
+        header: "Souhaitez vous réellement vider votre panier ?",
+        message:
+          "Une fois vidé, vous allez devoir chercher de nouveau des produits.",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            id: "cancel-button",
+          },
+          {
+            text: "Confirmer",
+            id: "confirm-button",
+            handler: () => {
+              this.$store.dispatch("emptyCart");
+            },
+          },
+        ],
+      });
+      return alert.present();
+    },
   },
 });
 </script>
