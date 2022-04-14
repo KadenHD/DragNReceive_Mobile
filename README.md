@@ -84,7 +84,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Ajout au panier, si il est déjà dans le store, regarder que le stock est cohérent
+- petite icone dans le footer du panier avec le nombre de produits au panier (quantités comprises ?)
 - Page du panier permettant de réaliser la commande / modifier la commande
  
 # Sources
