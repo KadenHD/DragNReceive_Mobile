@@ -9,7 +9,6 @@ const renderAlert = async (key) => {
             {
                 text: "Ok",
                 role: "confirm",
-                cssClass: "primary",
                 id: "confirm-button",
             },
         ],
