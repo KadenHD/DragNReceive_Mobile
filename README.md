@@ -84,8 +84,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Page Boutiques, contenant les produits de la boutique
-- Page Produit, permettant d'acheter et les stocks (page avec back butto (comme les options))
+- Ajout au panier, si il est déjà dans le store, regarder que le stock est cohérent
+- Page du panier permettant de réaliser la commande / modifier la commande
  
 # Sources
 
