@@ -68,7 +68,6 @@ import {
 import { defineComponent, reactive } from "vue";
 import { mapGetters } from "vuex";
 import { stockIsValid } from "@/utils/validInputs.js";
-import { alertController } from "@ionic/vue";
 
 export default defineComponent({
   name: "ProfileParameters",
@@ -136,23 +135,12 @@ export default defineComponent({
         this.myProduct.stock
       ).valid;
       if (formIsValid) {
-        this.submitBuyFormConfirm();
+        const cart = {
+          quantities: this.data.quantities,
+          product: this.myProduct,
+        };
+        this.$store.dispatch("addToCart", cart);
       }
-    },
-    async submitBuyFormConfirm() {
-      const alert = await alertController.create({
-        header: `${this.data.quantities} ${this.myProduct.name} ajouté au panier !`,
-        message:
-          "Vous pourrez par la suite accéder à votre panier pour acheter ces produits.",
-        buttons: [
-          {
-            text: "Ok",
-            role: "confirm",
-            id: "confirm-button",
-          },
-        ],
-      });
-      return alert.present();
     },
   },
 });
