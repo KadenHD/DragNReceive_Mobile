@@ -4,11 +4,9 @@
     <ion-card>
       <ion-img :src="url + product.path" />
       <ion-card-header>
-        <ion-card-subtitle>{{ product.stock }} restant</ion-card-subtitle>
         <ion-card-title>{{ product.name }} </ion-card-title>
         <ion-card-title>{{ product.price }} €</ion-card-title>
       </ion-card-header>
-      <ion-card-content> {{ product.description }} <br /> </ion-card-content>
       <UiButton
         class="button"
         color="secondary"
@@ -31,9 +29,7 @@ import {
   IonCard,
   IonImg,
   IonCardHeader,
-  IonCardSubtitle,
   IonCardTitle,
-  IonCardContent,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 
@@ -48,9 +44,7 @@ export default defineComponent({
     IonCard,
     IonImg,
     IonCardHeader,
-    IonCardSubtitle,
     IonCardTitle,
-    IonCardContent,
   },
   setup() {
     const url = process.env.VUE_APP_URL;
