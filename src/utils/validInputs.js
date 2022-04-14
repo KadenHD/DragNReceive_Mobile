@@ -81,3 +81,11 @@ export const contentIsValid = (v) => {
     if (!format) return { valid: false, error: "Le contenu doit faire maximum 255 caractères" }
     return { valid: true };
 }
+
+export const stockIsValid = (v, w) => {
+    const required = v > "0";
+    const compare = v <= w;
+    if (!required) return { valid: false, error: "Le nouveau mot de passe est requis" };
+    if (!compare) return { valid: false, error: "Les mot de passe doivent être différents" };
+    return { valid: true };
+}
