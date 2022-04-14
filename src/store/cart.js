@@ -7,6 +7,9 @@ export default {
     },
     actions: {
         cart(context, cart) { context.commit('cart', cart); },
+        addToCart(context, cart) {
+            //
+        }
     },
     mutations: {
         cart(state, cart) { state.cart = cart; },
