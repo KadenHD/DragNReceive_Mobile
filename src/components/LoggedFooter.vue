@@ -42,7 +42,7 @@
       <ion-label></ion-label>
     </ion-tab-button>
 
-    <ion-img src="assets/img/Jimdo/DragNReceive/hexaName/logo.svg" />
+    <ion-img src="assets/img/logo.svg" />
 
     <ion-tab-button
       v-if="this.$route.name === 'Cart'"
@@ -62,7 +62,7 @@
       @click="this.$router.push({ name: 'Cart' })"
     >
       <ion-icon :icon="cartOutline" />
-      <ion-label></ion-label>
+      <ion-label v-if="cartQuantities">{{ cartQuantities }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button
@@ -97,6 +97,7 @@ import {
   ticketOutline,
 } from "ionicons/icons";
 import { defineComponent } from "vue";
+import { mapGetters } from "vuex";
 
 export default defineComponent({
   name: "LoggedFooter",
@@ -114,6 +115,16 @@ export default defineComponent({
       cartOutline,
       ticketOutline,
     };
+  },
+  computed: {
+    ...mapGetters(["cart"]),
+    cartQuantities: function () {
+      let number = 0;
+      for (let i = 0; i < this.cart.items.length; i++) {
+        number += parseInt(this.cart.items[i].quantities);
+      }
+      return number;
+    },
   },
 });
 </script>
