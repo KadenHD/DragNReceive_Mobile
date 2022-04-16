@@ -33,6 +33,9 @@ export default {
                 context.commit("addItem", cart);
             }
         },
+        removeProductCart(context, index) {
+            context.commit("removeCartItem", index);
+        },
         emptyCart(context) {
             context.commit("cart", { items: [] });
         },
@@ -45,6 +48,9 @@ export default {
             const productQuant = parseInt(payload.cart.quantities);
             const value = itemsQuant + productQuant
             state.cart.items[payload.i].quantities = value.toString()
+        },
+        removeCartItem(state, index) {
+            state.cart.items.splice(index, 1);
         }
     }
 }
