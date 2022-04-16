@@ -145,3 +145,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped lang="scss">
+ion-img {
+  height: 250px;
+  width: 250px;
+  margin: 0 auto;
+}
+</style>
