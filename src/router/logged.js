@@ -1,4 +1,5 @@
 import { isLogged } from '@/utils/beforeEnter.js';
+import store from '@/store';
 
 import profileRouter from "./profile.js";
 import shopRouter from "./shop.js";
@@ -21,6 +22,9 @@ export default [
                 path: 'cart',
                 name: 'Cart',
                 component: () => import('@/views/cart/CartTab.vue'),
+                beforeEnter: function () {
+                    store.dispatch("setCart");
+                }
             },
             ...ticketRouter,
         ]
