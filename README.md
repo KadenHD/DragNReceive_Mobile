@@ -84,8 +84,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- petite icone dans le footer du panier avec le nombre de produits au panier (quantités comprises ?)
-- Page du panier permettant de réaliser la commande / modifier la commande
+- Finalisation de la commande
+- Page de suivis des commandes
+- Annulation des commandes (en fonction des conditions...)
  
 # Sources
 
