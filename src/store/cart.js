@@ -1,4 +1,5 @@
 import renderAlert from '@/utils/renderAlert.js';
+import axios from 'axios';
 
 export default {
     state: {
@@ -11,27 +12,56 @@ export default {
     },
     actions: {
         cart(context, cart) { context.commit('cart', cart); },
-        addToCart(context, cart) {
+        setCart(context) {
+            for (let i = 0; i < context.state.cart.items.length; i++) {
+                axios
+                    .get("products/" + context.state.cart.items[i].product.id)
+                    .then((response) => {
+                        if (response.data.stock < context.state.cart.items[i].quantities) {
+                            context.dispatch("removeProductCart", i);
+                        } else {
+                            context.state.cart.items[i].product = response.data
+                        }
+                    })
+                    .catch(() => {
+                        context.dispatch("removeProductCart", i);
+                    });
+            }
+        },
+        addToCart(context, payload) {
             let exist = false
-            for (let i = 0; i < context.getters.cart.items.length; i++) { // fetch inside the cart items
-                if (context.getters.cart.items[i].product.id === cart.product.id) { // if exist
-                    exist = true
-                    const stock = parseInt(context.getters.cart.items[i].product.stock);
-                    const stockedQuantities = parseInt(context.getters.cart.items[i].quantities);
-                    const newQuantities = parseInt(cart.quantities);
-                    if (stock >= stockedQuantities + newQuantities) { // if stock >= totalQuantities
-                        const payload = { i, cart }
-                        context.commit("addQuantities", payload)
-                        renderAlert("La quantité a bien été modifiée !");
-                    } else { // if too much
-                        renderAlert("Le stock n'est pas suffisant pour pouvoir ajouter cette quantité au panier !");
+            axios
+                .get("products/" + payload.id)
+                .then((response) => {
+                    const product = response.data;
+                    const stock = parseInt(response.data.stock);
+                    const cart = {
+                        quantities: payload.quantities,
+                        product: product
                     }
-                }
-            }
-            if (!exist) {
-                renderAlert("Le produit a bien été ajouté au panier !");
-                context.commit("addItem", cart);
-            }
+                    for (let i = 0; i < context.getters.cart.items.length; i++) { // fetch inside the cart items
+                        if (context.getters.cart.items[i].product.id === payload.id) { // if exist
+                            exist = true
+                            const stockedQuantities = parseInt(context.getters.cart.items[i].quantities);
+                            const newQuantities = parseInt(payload.quantities);
+                            if (stock >= stockedQuantities + newQuantities) { // if stock >= totalQuantities
+                                const payload = { i, cart }
+                                context.commit("addQuantities", payload)
+                                renderAlert("La quantité a bien été modifiée !");
+                            } else { // if too much
+                                renderAlert("Le stock n'est pas suffisant pour pouvoir ajouter cette quantité au panier !");
+                            }
+                        }
+                    }
+                    if (!exist) {
+                        renderAlert("Le produit a bien été ajouté au panier !");
+                        context.commit("addItem", cart);
+                    }
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                })
+
         },
         removeProductCart(context, index) {
             context.commit("removeCartItem", index);
