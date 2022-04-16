@@ -13,7 +13,7 @@
           >
           <ion-img src="assets/img/empty_cart.svg" />
         </div>
-        <UiButton class="button" color="secondary"
+        <UiButton v-if="myCart" class="button" color="secondary"
           >Finaliser ma commande</UiButton
         >
       </Wrapper>
