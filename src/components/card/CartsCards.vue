@@ -15,7 +15,9 @@
         />
       </ion-col>
       <ion-col> {{ item.product.name }} </ion-col>
-      <ion-col> {{ item.product.price * item.quantities }}€ </ion-col>
+      <ion-col>
+        {{ parseFloat(item.product.price * item.quantities).toFixed(2) }}€
+      </ion-col>
       <ion-col> {{ item.quantities }} </ion-col>
       <ion-col>
         <ion-icon
@@ -51,7 +53,7 @@ export default defineComponent({
       for (let i = 0; i < this.items.length; i++) {
         price += this.items[i].product.price * this.items[i].quantities;
       }
-      return price;
+      return parseFloat(price).toFixed(2);
     },
   },
   methods: {
