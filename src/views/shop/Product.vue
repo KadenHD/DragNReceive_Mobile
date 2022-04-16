@@ -135,11 +135,11 @@ export default defineComponent({
         this.myProduct.stock
       ).valid;
       if (formIsValid) {
-        const cart = {
+        const payload = {
           quantities: this.data.quantities,
-          product: this.myProduct,
+          id: this.myProduct.id,
         };
-        this.$store.dispatch("addToCart", cart);
+        this.$store.dispatch("addToCart", payload);
       }
     },
   },
