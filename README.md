@@ -84,7 +84,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Finalisation de la commande (envoyer uniquement les id et quantité (le back ferra le reste pour éviter les fraudes par api))
 - Page de suivis des commandes
 - Annulation des commandes (en fonction des conditions...)
  
