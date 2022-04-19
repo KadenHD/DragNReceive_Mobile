@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-      <Wrapper title="Mon panier" deleteCart>
+      <Wrapper :title="`Mon panier (${cartQuantities} articles)`" deleteCart>
         <div v-if="myCart">
           <CartsCards :items="myCart" />
         </div>
@@ -13,7 +13,11 @@
           >
           <ion-img src="assets/img/empty_cart.svg" />
         </div>
-        <UiButton v-if="myCart" class="button" color="secondary"
+        <UiButton
+          v-if="myCart"
+          class="button"
+          color="secondary"
+          @click="orderAlert()"
           >Finaliser ma commande</UiButton
         >
       </Wrapper>
@@ -25,7 +29,13 @@
 import Wrapper from "@/components/Wrapper.vue";
 import CartsCards from "@/components/card/CartsCards.vue";
 import UiButton from "@/components/ui/Button.vue";
-import { IonPage, IonContent, IonImg, IonText } from "@ionic/vue";
+import {
+  IonPage,
+  IonContent,
+  IonImg,
+  IonText,
+  alertController,
+} from "@ionic/vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
@@ -48,6 +58,37 @@ export default defineComponent({
       } else {
         return this.cart.items;
       }
+    },
+    cartQuantities: function () {
+      let number = 0;
+      for (let i = 0; i < this.cart.items.length; i++) {
+        number += parseInt(this.cart.items[i].quantities);
+      }
+      return number;
+    },
+  },
+  methods: {
+    async orderAlert() {
+      const alert = await alertController.create({
+        header: "Souhaitez vous réellement passer commande ?",
+        message:
+          "Vous pourrez par la suite suivre vos commandes ou bien les annuler (le système de paiment n'a pas encore été implémenté).",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            id: "cancel-button",
+          },
+          {
+            text: "Acheter",
+            id: "confirm-button",
+            handler: () => {
+              this.$store.dispatch("makeOrder", this.myCart);
+            },
+          },
+        ],
+      });
+      return alert.present();
     },
   },
 });
