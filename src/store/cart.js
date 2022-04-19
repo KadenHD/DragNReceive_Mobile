@@ -69,6 +69,25 @@ export default {
         emptyCart(context) {
             context.commit("cart", { items: [] });
         },
+        makeOrder(context, myCart) {
+            let orders = [];
+            for (let i = 0; i < myCart.length; i++) {
+                const order = {
+                    id: myCart[i].product.id,
+                    quantities: parseInt(myCart[i].quantities),
+                };
+                orders.push(order);
+            }
+            axios
+                .post("orders/", { orders: orders })
+                .then((response) => {
+                    renderAlert(response.data.success);
+                    context.dispatch("emptyCart")
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                })
+        }
     },
     mutations: {
         cart(state, cart) { state.cart = cart; },
