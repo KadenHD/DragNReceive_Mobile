@@ -9,13 +9,18 @@
       <Wrapper v-if="myProduct" :title="myProduct.name">
         <ion-img :src="url + myProduct.path" />
         <ion-card-header>
-          <ion-card-subtitle>{{ myProduct.stock }} restant</ion-card-subtitle>
+          <ion-card-subtitle v-if="myProduct.stock > 0"
+            >{{ myProduct.stock }} restant</ion-card-subtitle
+          >
+          <ion-card-subtitle color="danger" v-else
+            >Le stock est épuisé...</ion-card-subtitle
+          >
           <ion-card-title>{{ myProduct.price }} €</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           {{ myProduct.description }} <br />
         </ion-card-content>
-        <form @submit.prevent="submitBuyForm">
+        <form @submit.prevent="submitBuyForm" v-if="myProduct.stock > 0">
           <UiInput
             disabled
             label="Quantité"
