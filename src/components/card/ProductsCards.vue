@@ -6,6 +6,9 @@
       <ion-card-header>
         <ion-card-title>{{ product.name }} </ion-card-title>
         <ion-card-title>{{ product.price }} €</ion-card-title>
+        <ion-card-subtitle color="danger" v-if="product.stock <= 0">
+          Le stock est épuisé...</ion-card-subtitle
+        >
       </ion-card-header>
       <UiButton
         class="button"
@@ -30,6 +33,7 @@ import {
   IonImg,
   IonCardHeader,
   IonCardTitle,
+  IonCardSubtitle,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 
@@ -45,6 +49,7 @@ export default defineComponent({
     IonImg,
     IonCardHeader,
     IonCardTitle,
+    IonCardSubtitle,
   },
   setup() {
     const url = process.env.VUE_APP_URL;
