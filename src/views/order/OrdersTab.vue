@@ -23,7 +23,9 @@
           @click="this.$router.push({ query: { filter: 'canceled' } })"
           >Annulée</ion-button
         >
-        {{ userOrders }}
+        <div v-for="item in userOrders" v-bind:key="item.number">
+          {{ item.number }}
+        </div>
       </Wrapper>
     </ion-content>
   </ion-page>
@@ -33,9 +35,9 @@
 import Wrapper from "@/components/Wrapper.vue";
 import { IonPage, IonContent, IonButton } from "@ionic/vue";
 import { defineComponent } from "vue";
-
 import { mapGetters } from "vuex";
 import _ from "lodash";
+import { reformatedDates, orderStatusName } from "@/utils/index.js";
 
 export default defineComponent({
   name: "TicketsTab",
@@ -76,7 +78,12 @@ export default defineComponent({
             if (i.status === "5") return i;
           });
         }
-        return _.orderBy(orders, ["updatedAt"], ["desc"]); // voir si marche
+        orders = orders.filter(function (i) {
+          i.date = reformatedDates(i.date);
+          i.statusName = orderStatusName(i.status);
+          return i;
+        });
+        return _.orderBy(orders, ["date"], ["desc"]); // voir si marche
       }
     },
   },
