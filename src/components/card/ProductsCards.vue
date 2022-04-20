@@ -1,27 +1,29 @@
 <template>
-  <div v-for="product in items" v-bind:key="product.id">
-    <ion-item-divider v-if="product.id !== items[0].id" />
-    <ion-card>
-      <ion-img :src="url + product.path" />
-      <ion-card-header>
-        <ion-card-title>{{ product.name }} </ion-card-title>
-        <ion-card-title>{{ product.price }} €</ion-card-title>
-        <ion-card-subtitle color="danger" v-if="product.stock <= 0">
-          Le stock est épuisé...</ion-card-subtitle
+  <div>
+    <div v-for="product in items" v-bind:key="product.id">
+      <ion-item-divider v-if="product.id !== items[0].id" />
+      <ion-card>
+        <ion-img :src="url + product.path" />
+        <ion-card-header>
+          <ion-card-title>{{ product.name }} </ion-card-title>
+          <ion-card-title>{{ product.price }} €</ion-card-title>
+          <ion-card-subtitle color="danger" v-if="product.stock <= 0">
+            Le stock est épuisé...</ion-card-subtitle
+          >
+        </ion-card-header>
+        <UiButton
+          class="button"
+          color="secondary"
+          @click="
+            this.$router.push({
+              name: 'Product',
+              params: { id: product.id },
+            })
+          "
+          >Voir</UiButton
         >
-      </ion-card-header>
-      <UiButton
-        class="button"
-        color="secondary"
-        @click="
-          this.$router.push({
-            name: 'Product',
-            params: { id: product.id },
-          })
-        "
-        >Voir</UiButton
-      >
-    </ion-card>
+      </ion-card>
+    </div>
   </div>
 </template>
 
