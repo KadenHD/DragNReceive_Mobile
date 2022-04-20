@@ -30,7 +30,7 @@
     
 # Introduction
     
-
+The DragN'Receive company wishes to create a click & collect system across the entire Compiègne conurbation, having as partners markets and businesses mainly focused on the sale of foodstuffs and consumer products. Using a mobile application allowing customers to orders products.
 
 # Installation
 
@@ -52,6 +52,11 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Create app and dist for Android
+```
+ionic capacitor add android
 ```
 
 ### Build for Android
