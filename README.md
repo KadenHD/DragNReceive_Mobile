@@ -95,6 +95,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Améliorations potentielles
 
 - Vérifier si on est sur web ou mobile pour utiliser axios ou HTTP natif au bon moment
+- Mettre du délai sur les buttons du footer pour éviter les glitchs
  
 # Sources
 
