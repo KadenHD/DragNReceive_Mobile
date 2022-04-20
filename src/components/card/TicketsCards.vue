@@ -22,23 +22,21 @@
       <u>Dernière modification :</u> <br />
       {{ reformatedDates(ticket.updatedAt) }}
     </ion-card-content>
-    <ion-item>
-      <ion-button
-        @click="
-          this.$router.push({
-            name: 'Ticket',
-            params: { id: ticket.id },
-          })
-        "
-        >Voir</ion-button
-      >
-      <ion-button
-        v-if="ticket.ticketStatusId === '1'"
-        color="secondary"
-        @click="deleteTicket(ticket.id)"
-        >Clore</ion-button
-      >
-    </ion-item>
+    <ion-button
+      @click="
+        this.$router.push({
+          name: 'Ticket',
+          params: { id: ticket.id },
+        })
+      "
+      >Voir</ion-button
+    >
+    <ion-button
+      v-if="ticket.ticketStatusId === '1'"
+      color="secondary"
+      @click="deleteTicket(ticket.id)"
+      >Clore</ion-button
+    >
   </ion-card>
 </template>
 
@@ -50,7 +48,6 @@ import {
   IonCardTitle,
   IonCardSubtitle,
   IonCardContent,
-  IonItem,
   IonButton,
   alertController,
 } from "@ionic/vue";
@@ -67,7 +64,6 @@ export default defineComponent({
     IonCardTitle,
     IonCardSubtitle,
     IonCardContent,
-    IonItem,
     IonButton,
   },
   setup() {
@@ -101,7 +97,10 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.border {
-  box-shadow: 0px 3px 6px 0px rgba(128, 128, 128, 0.367);
+ion-card {
+  background-color: var(--ion-background-color);
+}
+ion-button {
+  margin-left: 20px;
 }
 </style>
