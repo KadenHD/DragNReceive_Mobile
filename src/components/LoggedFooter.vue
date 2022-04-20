@@ -1,23 +1,23 @@
 <template>
   <ion-tab-bar>
     <ion-tab-button
-      v-if="this.$route.name === 'Home'"
+      v-if="this.$route.name === 'Orders'"
       class="borderRadiusLeft tab-selected"
-      id="Home"
-      tab="Home"
-      @click="this.$router.push({ name: 'Home' })"
+      id="Orders"
+      tab="Orders"
+      @click="this.$router.push({ name: 'Orders' })"
     >
-      <ion-icon :icon="homeOutline" />
+      <ion-icon :icon="locationOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
     <ion-tab-button
       v-else
       class="borderRadiusLeft"
-      id="Home"
-      tab="Home"
-      @click="this.$router.push({ name: 'Home' })"
+      id="Orders"
+      tab="Orders"
+      @click="this.$router.push({ name: 'Orders' })"
     >
-      <ion-icon :icon="homeOutline" />
+      <ion-icon :icon="locationOutline" />
       <ion-label></ion-label>
     </ion-tab-button>
 
@@ -42,7 +42,10 @@
       <ion-label></ion-label>
     </ion-tab-button>
 
-    <ion-img src="assets/img/logo.svg" />
+    <ion-img
+      @click="this.$router.push({ name: 'Home' })"
+      src="assets/img/logo.svg"
+    />
 
     <ion-tab-button
       v-if="this.$route.name === 'Cart'"
@@ -91,7 +94,7 @@
 <script>
 import { IonTabBar, IonTabButton, IonIcon, IonLabel, IonImg } from "@ionic/vue";
 import {
-  homeOutline,
+  locationOutline,
   personOutline,
   cartOutline,
   ticketOutline,
@@ -110,7 +113,7 @@ export default defineComponent({
   },
   setup() {
     return {
-      homeOutline,
+      locationOutline,
       personOutline,
       cartOutline,
       ticketOutline,
