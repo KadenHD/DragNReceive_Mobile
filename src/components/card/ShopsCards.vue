@@ -1,38 +1,42 @@
 <template>
-  <div v-for="shop in items" v-bind:key="shop.id">
-    <ion-item-divider v-if="shop.id !== items[0].id" />
-    <ion-card>
-      <ion-img :src="shop.path ? url + shop.path : 'assets/img/default.svg'" />
-      <ion-card-header>
-        <ion-card-subtitle
-          ><a :href="`mailto:${shop.email}`">{{
-            shop.email
-          }}</a></ion-card-subtitle
+  <div>
+    <div v-for="shop in items" v-bind:key="shop.id">
+      <ion-item-divider v-if="shop.id !== items[0].id" />
+      <ion-card>
+        <ion-img
+          :src="shop.path ? url + shop.path : 'assets/img/default.svg'"
+        />
+        <ion-card-header>
+          <ion-card-subtitle
+            ><a :href="`mailto:${shop.email}`">{{
+              shop.email
+            }}</a></ion-card-subtitle
+          >
+          <ion-card-subtitle
+            ><a :href="`tel:${shop.phone}`">{{
+              shop.phone
+            }}</a></ion-card-subtitle
+          >
+          <ion-card-title>{{ shop.name }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Adresse de la boutique partenaire :
+          {{ shop.city }}, {{ shop.street }},
+          {{ shop.postal }}
+        </ion-card-content>
+        <UiButton
+          class="button"
+          color="secondary"
+          @click="
+            this.$router.push({
+              name: 'Shop',
+              params: { id: shop.id },
+            })
+          "
+          >Voir</UiButton
         >
-        <ion-card-subtitle
-          ><a :href="`tel:${shop.phone}`">{{
-            shop.phone
-          }}</a></ion-card-subtitle
-        >
-        <ion-card-title>{{ shop.name }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Adresse de la boutique partenaire :
-        {{ shop.city }}, {{ shop.street }},
-        {{ shop.postal }}
-      </ion-card-content>
-      <UiButton
-        class="button"
-        color="secondary"
-        @click="
-          this.$router.push({
-            name: 'Shop',
-            params: { id: shop.id },
-          })
-        "
-        >Voir</UiButton
-      >
-    </ion-card>
+      </ion-card>
+    </div>
   </div>
 </template>
 
