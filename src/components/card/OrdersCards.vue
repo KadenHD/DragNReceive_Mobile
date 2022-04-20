@@ -6,6 +6,9 @@
       class="border ion-padding-bottom"
     >
       <ion-card-header>
+        <ion-card-title :class="`status${order.status}`">{{
+          orderStatusName(order.status)
+        }}</ion-card-title>
         <ion-card-title>Commande <br />{{ order.number }}</ion-card-title>
         <ion-card-subtitle
           >Vous avez {{ order.orders.length }} produits différents dans cette
@@ -62,6 +65,10 @@ import {
   IonCardSubtitle,
   IonCardContent,
   IonButton,
+  IonImg,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from "@ionic/vue";
 import { reformatedDates, orderStatusName } from "@/utils/index.js";
 
@@ -77,6 +84,10 @@ export default defineComponent({
     IonCardSubtitle,
     IonCardContent,
     IonButton,
+    IonImg,
+    IonGrid,
+    IonRow,
+    IonCol,
   },
   setup() {
     const url = process.env.VUE_APP_URL;
@@ -99,5 +110,20 @@ ion-card {
 }
 ion-button {
   margin-left: 20px;
+}
+.status1 {
+  color: rgb(0, 119, 255);
+}
+.status2 {
+  color: rgb(255, 208, 0);
+}
+.status3 {
+  color: rgb(174, 0, 255);
+}
+.status4 {
+  color: rgb(28, 207, 22);
+}
+.status5 {
+  color: rgb(192, 21, 21);
 }
 </style>
