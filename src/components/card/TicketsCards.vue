@@ -1,43 +1,45 @@
 <template>
-  <ion-card
-    v-for="ticket in items"
-    v-bind:key="ticket.id"
-    class="border ion-padding-bottom"
-  >
-    <ion-card-header>
-      <ion-card-title
-        >{{ ticket.title }} ({{
-          ticketStatusName(ticket.ticketStatusId)
-        }})</ion-card-title
-      >
-      <ion-card-subtitle v-if="ticket.messages.length"
-        >Vous avez {{ ticket.messages.length }} messages sur ce
-        ticket</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content>
-      {{ ticket.content }} <br />
-      <u>Date de création :</u> <br />
-      {{ reformatedDates(ticket.createdAt) }} <br />
-      <u>Dernière modification :</u> <br />
-      {{ reformatedDates(ticket.updatedAt) }}
-    </ion-card-content>
-    <ion-button
-      @click="
-        this.$router.push({
-          name: 'Ticket',
-          params: { id: ticket.id },
-        })
-      "
-      >Voir</ion-button
+  <div>
+    <ion-card
+      v-for="ticket in items"
+      v-bind:key="ticket.id"
+      class="border ion-padding-bottom"
     >
-    <ion-button
-      v-if="ticket.ticketStatusId === '1'"
-      color="secondary"
-      @click="deleteTicket(ticket.id)"
-      >Clore</ion-button
-    >
-  </ion-card>
+      <ion-card-header>
+        <ion-card-title
+          >{{ ticket.title }} ({{
+            ticketStatusName(ticket.ticketStatusId)
+          }})</ion-card-title
+        >
+        <ion-card-subtitle v-if="ticket.messages.length"
+          >Vous avez {{ ticket.messages.length }} messages sur ce
+          ticket</ion-card-subtitle
+        >
+      </ion-card-header>
+      <ion-card-content>
+        {{ ticket.content }} <br />
+        <u>Date de création :</u> <br />
+        {{ reformatedDates(ticket.createdAt) }} <br />
+        <u>Dernière modification :</u> <br />
+        {{ reformatedDates(ticket.updatedAt) }}
+      </ion-card-content>
+      <ion-button
+        @click="
+          this.$router.push({
+            name: 'Ticket',
+            params: { id: ticket.id },
+          })
+        "
+        >Voir</ion-button
+      >
+      <ion-button
+        v-if="ticket.ticketStatusId === '1'"
+        color="secondary"
+        @click="deleteTicket(ticket.id)"
+        >Clore</ion-button
+      >
+    </ion-card>
+  </div>
 </template>
 
 <script>
