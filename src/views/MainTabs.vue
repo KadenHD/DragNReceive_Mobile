@@ -10,7 +10,8 @@
           this.$route.name != 'Ticket' &&
           this.$route.name != 'TicketCreate' &&
           this.$route.name != 'Shop' &&
-          this.$route.name != 'Product'
+          this.$route.name != 'Product' &&
+          this.$route.name != 'Order'
         "
       />
       <ion-router-outlet></ion-router-outlet>
@@ -22,7 +23,8 @@
           this.$route.name != 'Ticket' &&
           this.$route.name != 'TicketCreate' &&
           this.$route.name != 'Shop' &&
-          this.$route.name != 'Product'
+          this.$route.name != 'Product' &&
+          this.$route.name != 'Order'
         "
       />
     </ion-tabs>
