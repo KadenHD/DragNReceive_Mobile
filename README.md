@@ -89,8 +89,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Page de suivis des commandes
-- Annulation des commandes (en fonction des conditions...)
+- Page d'une commande (annulation des commandes en fonction des conditions)
 
 # Améliorations potentielles
 
