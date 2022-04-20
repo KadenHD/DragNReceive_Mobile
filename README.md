@@ -86,6 +86,10 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 - Page de suivis des commandes
 - Annulation des commandes (en fonction des conditions...)
+
+# Améliorations potentielles
+
+- Vérifier si on est sur web ou mobile pour utiliser axios ou HTTP natif au bon moment
  
 # Sources
 
