@@ -27,8 +27,8 @@
         />
       </ion-col>
     </ion-row>
+    <ion-title>Total : {{ totalPrice }} €</ion-title>
   </ion-grid>
-  <ion-title>Total : {{ totalPrice }} €</ion-title>
 </template>
 
 <script>
