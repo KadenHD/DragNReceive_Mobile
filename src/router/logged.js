@@ -2,6 +2,7 @@ import { isLogged } from '@/utils/beforeEnter.js';
 import store from '@/store';
 
 import profileRouter from "./profile.js";
+import orderRouter from './order.js';
 import shopRouter from "./shop.js";
 import ticketRouter from './ticket.js';
 
@@ -18,6 +19,7 @@ export default [
             },
             ...profileRouter,
             ...shopRouter,
+            ...orderRouter,
             {
                 path: 'cart',
                 name: 'Cart',
