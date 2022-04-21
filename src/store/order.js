@@ -40,7 +40,7 @@ export default {
             axios
                 .post("orders/cancelOrder", data)
                 .then((response) => {
-                    context.dispatch("setOrders");
+                    context.dispatch("setOrder", data.number);
                     renderAlert(response.data.success);
                 })
                 .catch((error) => {
