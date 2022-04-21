@@ -89,10 +89,11 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 # To-do
 
-- Page d'une commande (annulation des commandes en fonction des conditions)
+- Annulation des commandes dans le store
 
 # Améliorations potentielles
 
+- Ajout dans les options du profile le changement de mode light / dark
 - Vérifier si on est sur web ou mobile pour utiliser axios ou HTTP natif au bon moment
 - Mettre du délai sur les buttons du footer pour éviter les glitchs
  
