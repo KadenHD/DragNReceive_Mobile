@@ -9,12 +9,6 @@
       v-if="perShopOrders"
       :title="`Commande n°${this.$route.params.id}`"
     >
-      <ion-icon
-        v-if="perShopOrders.globalStatus"
-        :icon="trashOutline"
-        size="large"
-        @click="cancelOrder()"
-      />
       <ion-card v-for="(shop, i) in perShopOrders.shops" v-bind:key="shop.id">
         <ion-row>
           <ion-card-title class="shopTitle">{{
@@ -44,12 +38,19 @@
           </ion-grid>
         </div>
       </ion-card>
+      <UiButton
+        v-if="perShopOrders.globalStatus"
+        color="danger"
+        @click="cancelOrder()"
+        >Annuler</UiButton
+      >
     </Wrapper>
   </ion-page>
 </template>
 
 <script>
 import Wrapper from "@/components/Wrapper.vue";
+import UiButton from "@/components/ui/Button.vue";
 import {
   IonPage,
   IonButtons,
@@ -73,6 +74,7 @@ export default defineComponent({
   name: "Ticket",
   components: {
     Wrapper,
+    UiButton,
     IonPage,
     IonButtons,
     IonHeader,
