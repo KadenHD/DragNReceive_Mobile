@@ -83,6 +83,7 @@ export default {
                 .then((response) => {
                     renderAlert(response.data.success);
                     context.dispatch("emptyCart")
+                    context.dispatch("setOrders");
                 })
                 .catch((error) => {
                     renderAlert(error.response.data.error);
