@@ -36,6 +36,17 @@ export default {
                     renderAlert(error.response.data.error);
                 });
         },
+        cancelOrder(context, data) {
+            axios
+                .post("orders/cancelOrder", data)
+                .then((response) => {
+                    context.dispatch("setOrders");
+                    renderAlert(response.data.success);
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
+        }
     },
     mutations: {
         orders(state, orders) { state.orders = orders; },
