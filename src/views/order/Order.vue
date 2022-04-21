@@ -9,19 +9,22 @@
       v-if="perShopOrders"
       :title="`Commande n°${this.$route.params.id}`"
     >
-      <ion-card v-for="(shop, i) in perShopOrders.shops" v-bind:key="shop.id">
+      <ion-card v-for="shop in perShopOrders.shops" v-bind:key="shop.id">
         <ion-row>
-          <ion-card-title class="shopTitle">{{
-            shop.orders[0].shop.name
-          }}</ion-card-title>
+          <ion-card-title class="shopTitle"
+            >{{ shop.orders[0].shop.name }}
+          </ion-card-title>
           <ion-icon
             v-if="shop.status === '1'"
             class="shopIcon"
             :icon="closeOutline"
             size="large"
-            @click="cancelOneShop(i)"
+            @click="cancelOneShop(shop.id)"
           />
         </ion-row>
+        <ion-card-title :class="`shopTitle status${shop.status}`">
+          {{ orderStatusName(shop.status) }}
+        </ion-card-title>
         <div v-for="order in shop.orders" v-bind:key="order.id">
           <ion-grid>
             <ion-row>
@@ -38,6 +41,9 @@
           </ion-grid>
         </div>
       </ion-card>
+      <ion-card-title
+        >Prix total : {{ perShopOrders.totalPrice }} €</ion-card-title
+      >
       <UiButton
         v-if="perShopOrders.globalStatus"
         color="danger"
@@ -65,10 +71,12 @@ import {
   IonGrid,
   IonCol,
   IonIcon,
+  alertController,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 import { trashOutline, closeOutline } from "ionicons/icons";
+import { orderStatusName } from "@/utils/index.js";
 
 export default defineComponent({
   name: "Ticket",
@@ -91,7 +99,7 @@ export default defineComponent({
   },
   setup() {
     const url = process.env.VUE_APP_URL;
-    return { url, trashOutline, closeOutline };
+    return { url, trashOutline, closeOutline, orderStatusName };
   },
   created() {
     this.$store.dispatch("setOrder", this.$route.params.id);
@@ -105,8 +113,12 @@ export default defineComponent({
         let shopTab = {
           shops: [],
           globalStatus: true,
+          totalPrice: 0.0,
         };
         for (let i = 0; i < this.order.length; i++) {
+          shopTab.totalPrice = (
+            parseFloat(shopTab.totalPrice) + parseFloat(this.order[i].price)
+          ).toFixed(2);
           let exist = false;
           for (let j = 0; j < shopTab.shops.length; j++) {
             if (this.order[i].shopId === shopTab.shops[j].id) {
@@ -141,17 +153,62 @@ export default defineComponent({
     },
   },
   methods: {
-    cancelOneShop(i) {
-      const orders = this.perShopOrders.shops[i].orders;
-      console.log(orders);
-      // alertController
-      // then this.$store.dispatch("cancelOrder", orders)
+    async cancelOneShop(shopId) {
+      const data = {
+        number: this.$route.params.id,
+        shops: [shopId],
+      };
+      const alert = await alertController.create({
+        header: "Souhaitez vous vraiment annuler cette partie de la commande ?",
+        message:
+          "Une fois annulée, la commande de cette boutique sera annulée et non-facturée.",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            id: "cancel-button",
+          },
+          {
+            text: "Confirmer",
+            id: "confirm-button",
+            handler: () => {
+              this.$store.dispatch("cancelOrder", data);
+            },
+          },
+        ],
+      });
+      return alert.present();
+      // this.$store.dispatch("cancelOrder", orders)
     },
-    cancelOrder() {
-      const orders = this.order;
-      console.log(orders);
-      // alertController
-      // then this.$store.dispatch("cancelOrder", orders)
+    async cancelOrder() {
+      let shops = [];
+      for (let i = 0; i < this.perShopOrders.shops.length; i++) {
+        shops.push(this.perShopOrders.shops[i].id);
+      }
+      const data = {
+        number: this.$route.params.id,
+        shops: shops,
+      };
+      const alert = await alertController.create({
+        header: "Souhaitez vous vraiment annuler cette commande ?",
+        message:
+          "Une annulée, la commande entière sera annulée et non-facturée.",
+        buttons: [
+          {
+            text: "Annuler",
+            role: "cancel",
+            id: "cancel-button",
+          },
+          {
+            text: "Confirmer",
+            id: "confirm-button",
+            handler: () => {
+              this.$store.dispatch("cancelOrder", data);
+            },
+          },
+        ],
+      });
+      return alert.present();
     },
   },
 });
@@ -172,5 +229,20 @@ ion-img {
 .shopIcon {
   margin-left: 10px;
   margin-top: 5px;
+}
+.status1 {
+  color: rgb(0, 119, 255);
+}
+.status2 {
+  color: rgb(255, 208, 0);
+}
+.status3 {
+  color: rgb(174, 0, 255);
+}
+.status4 {
+  color: rgb(28, 207, 22);
+}
+.status5 {
+  color: rgb(192, 21, 21);
 }
 </style>
