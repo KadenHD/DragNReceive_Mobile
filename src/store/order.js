@@ -41,6 +41,7 @@ export default {
                 .post("orders/cancelOrder", data)
                 .then((response) => {
                     context.dispatch("setOrder", data.number);
+                    context.dispatch("setOrders");
                     renderAlert(response.data.success);
                 })
                 .catch((error) => {
