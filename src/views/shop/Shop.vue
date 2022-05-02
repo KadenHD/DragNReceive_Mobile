@@ -10,6 +10,19 @@
         <ion-img
           :src="myShop.path ? url + myShop.path : 'assets/img/default.svg'"
         />
+        <ion-icon
+          v-if="!isFav"
+          :icon="heartOutline"
+          size="large"
+          @click="addToFavoris()"
+        />
+        <ion-icon
+          v-if="isFav"
+          style="color: red"
+          :icon="heartOutline"
+          size="large"
+          @click="removeToFavoris()"
+        />
         <ion-card-header>
           <ion-card-subtitle
             ><a :href="`mailto:${myShop.email}`">{{
@@ -53,8 +66,9 @@ import {
   IonCardHeader,
   IonCardContent,
   IonList,
+  IonIcon,
 } from "@ionic/vue";
-import { chevronForward } from "ionicons/icons";
+import { chevronForward, heartOutline } from "ionicons/icons";
 import { defineComponent } from "vue";
 import { mapGetters } from "vuex";
 
@@ -75,21 +89,47 @@ export default defineComponent({
     IonCardHeader,
     IonCardContent,
     IonList,
+    IonIcon,
   },
   setup() {
-    return { chevronForward };
+    return { chevronForward, heartOutline };
   },
   created() {
     this.$store.dispatch("setShop", this.$route.params.id);
+    this.$store.dispatch("setFavoris");
+  },
+  methods: {
+    addToFavoris() {
+      const data = {
+        shopId: this.$route.params.id,
+      };
+      this.$store.dispatch("addToFavoris", data);
+    },
+    removeToFavoris() {
+      const data = {
+        shopId: this.$route.params.id,
+      };
+      this.$store.dispatch("removeToFavoris", data);
+    },
   },
   computed: {
-    ...mapGetters(["shop"]),
+    ...mapGetters(["shop", "favoris"]),
     myShop: function () {
       if (!this.shop) {
         return null;
       } else {
         return this.shop;
       }
+    },
+    isFav: function () {
+      let fav = false;
+      for (let i = 0; i < this.favoris.length; i++) {
+        if (this.favoris[i].id === this.$route.params.id) {
+          fav = true;
+        }
+      }
+      console.log(fav);
+      return fav;
     },
   },
 });

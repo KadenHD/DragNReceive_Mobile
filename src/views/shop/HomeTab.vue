@@ -6,7 +6,7 @@
       :scroll-events="true"
       @ionScroll="getScrollPos($event.detail.scrollTop)"
     >
-      <div v-if="myShops || myProducts">
+      <div v-if="myShops || myProducts || myFavoris">
         <ion-button color="secondary" @click="this.$router.push({})"
           >Produits</ion-button
         >
@@ -15,9 +15,15 @@
           @click="this.$router.push({ query: { filter: 'shops' } })"
           >Boutiques</ion-button
         >
+        <ion-button
+          color="secondary"
+          @click="this.$router.push({ query: { filter: 'favoris' } })"
+          >Favoris</ion-button
+        >
         <ion-list>
           <ProductsCards v-if="myProducts" :items="myProducts" />
           <ShopsCards v-if="myShops" :items="myShops" />
+          <ShopsCards v-if="myFavoris" :items="myFavoris" />
         </ion-list>
       </div>
     </ion-content>
@@ -59,9 +65,10 @@ export default defineComponent({
   created() {
     this.$store.dispatch("setProducts");
     this.$store.dispatch("setShops");
+    this.$store.dispatch("setFavoris");
   },
   computed: {
-    ...mapGetters(["products", "shops"]),
+    ...mapGetters(["products", "shops", "favoris"]),
     myProducts: function () {
       if (!this.products) {
         return null;
@@ -78,6 +85,17 @@ export default defineComponent({
       } else {
         if (this.$route.query.filter === "shops") {
           return fetchSearchElement(this.searchValue, this.shops);
+        } else {
+          return null;
+        }
+      }
+    },
+    myFavoris: function () {
+      if (!this.favoris) {
+        return null;
+      } else {
+        if (this.$route.query.filter === "favoris") {
+          return fetchSearchElement(this.searchValue, this.favoris);
         } else {
           return null;
         }

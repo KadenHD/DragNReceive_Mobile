@@ -9,18 +9,21 @@ export default {
         shop: null,
         products: null,
         product: null,
+        favoris: null,
     },
     getters: {
         shops: (state) => { return state.shops; },
         shop: (state) => { return state.shop; },
         products: (state) => { return state.products; },
         product: (state) => { return state.product; },
+        favoris: (state) => { return state.favoris; },
     },
     actions: {
         shops(context, shops) { context.commit('shops', shops); },
         shop(context, shop) { context.commit('shop', shop); },
         products(context, products) { context.commit('products', products); },
         product(context, product) { context.commit('product', product); },
+        favoris(context, favoris) { context.commit('favoris', favoris); },
         setShop(context, id) {
             axios
                 .get("shops/" + id)
@@ -63,11 +66,44 @@ export default {
                     renderAlert(error.response.data.error);
                 });
         },
+        addToFavoris(context, data) {
+            axios
+                .post("favoris", data)
+                .then((response) => {
+                    renderAlert(response.data.success);
+                    context.dispatch("setFavoris");
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
+        },
+        removeToFavoris(context, data) {
+            axios
+                .delete("favoris/" + data.shopId)
+                .then((response) => {
+                    renderAlert(response.data.success);
+                    context.dispatch("setFavoris");
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
+        },
+        setFavoris(context) {
+            axios
+                .get("favoris")
+                .then((response) => {
+                    context.commit("favoris", response.data.shops);
+                })
+                .catch((error) => {
+                    renderAlert(error.response.data.error);
+                });
+        }
     },
     mutations: {
         shops(state, shops) { state.shops = shops; },
         shop(state, shop) { state.shop = shop; },
         products(state, products) { state.products = products; },
         product(state, product) { state.product = product; },
+        favoris(state, favoris) { state.favoris = favoris; },
     }
 }
